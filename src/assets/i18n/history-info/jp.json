@@ -1,0 +1,50 @@
+{
+    "loginOption": {
+        "title": "ログイン",
+        "option1": "保険分析サービス開始",
+        "option2": "ログイン",
+        "option3": "パスワード更新"
+    },
+    "familyOption": {
+        "title": "家族情報",
+        "option1": "家族情報登録",
+        "option2": "家族情報追加",
+        "option3": "家族情報更新",
+        "option4": "家族情報削除"
+    },
+    "requestOption": {
+        "title": "依頼",
+        "option1": "お問合せ依頼",
+        "option2": "簡易診断依頼",
+        "option3": "お試し分析依頼",
+        "option4": "パスワード忘れ依頼",
+        "option5": "保険証券自動入力依頼"
+    },
+    "conventionOption": {
+        "title": "保険証券",
+        "option1": "保険証券登録",
+        "option2": "保険証券更新",
+        "option3": "保険証券削除",
+        "option4": "保険証券画像登録"
+    },
+    "companyOption": {
+        "title": "保険代理店",
+        "option1": "保険代理店登録",
+        "option2": "保険代理店更新",
+        "option3": "保険代理店削除"
+    },
+    "bannerOption": {
+        "title": "バナー",
+        "option1": "バナー呼出"
+    },
+    "time": "期間",
+    "day": "日",
+    "month": "月",
+    "year": "年",
+    "btnSearch": "検索",
+    "message": {
+        "fromDateGreaterToDate": "開始日を終了日より大きくしてはいけません。",
+        "monthRequired": "月を入力してください。",
+        "dayRequired": "日のみの入力は検索できません"
+    }
+}

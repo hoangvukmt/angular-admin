@@ -1,0 +1,63 @@
+<div class="no-padding remodal remodal-is-initialized remodal-is-opened">
+    <div class="popup-title custom-modal-title">代理店情報</div>
+    <div class="popup-container">
+        <div class="popup-content">
+            <table class="noborder-table input-table">
+                <tr class="tr-line-bottom">
+                    <td class="hasError">
+                        <input 
+                            class="user-name" 
+                            [formControl]="agentNameFormControl" 
+                            [ngClass]="{'input-error': agentNameFormControl.hasError('required') && (agentNameFormControl.dirty || agentNameFormControl.touched)}"
+                            placeholder="代理店名 (*)" 
+                            type="text" maxlength="40">
+                        <mat-error *ngIf="agentNameFormControl.hasError('required') && (agentNameFormControl.dirty || agentNameFormControl.touched)">
+                            代理店名を入力してください
+                        </mat-error>
+                    </td>
+                </tr>
+                <tr class="tr-line-bottom">
+                    <td>
+                        <input 
+                            class="user-name" 
+                            [formControl]="tantoNameFormControl" 
+                            placeholder="担当者" 
+                            type="text" maxlength="50">
+                    </td>
+                </tr>
+                <tr class="tr-line-bottom">
+                    <td>
+                        <input 
+                            class="user-name" 
+                            [formControl]="phoneFormControl" 
+                            placeholder="連絡先(電話)" 
+                            type="text" onkeyup="forceNumberPhone(event, this, 20)" onfocus="addValueToNext(this)" />
+                        <input type="hidden" />
+                    </td>
+                </tr>
+                <tr class="tr-line-bottom">
+                    <td class="hasError">
+                        <input 
+                            class="user-name" 
+                            [formControl]="keiyakuPageFormControl" 
+                            [ngClass]="{'input-error': keiyakuPageFormControl.hasError('ValidURL') && (keiyakuPageFormControl.dirty || keiyakuPageFormControl.touched)}"
+                            placeholder="ご契約者ページ(URL)" 
+                            type="text" maxlength="200">
+                        <mat-error *ngIf="keiyakuPageFormControl.hasError('ValidURL') && (keiyakuPageFormControl.dirty || keiyakuPageFormControl.touched)">
+                            URLの形式で入力してください。
+                        </mat-error>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="popup-footer custom-modal-footer">
+            <button 
+                type="button" 
+                class="normal-bt" 
+                (click)="createAgent()"
+                [disabled]="agentNameFormControl.hasError('required') || keiyakuPageFormControl.hasError('ValidURL')" 
+                [ngClass]="{'input-disable': agentNameFormControl.hasError('required') || keiyakuPageFormControl.hasError('ValidURL')}"
+                >保存</button>
+        </div>
+    </div>
+</div>

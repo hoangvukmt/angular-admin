@@ -1,0 +1,243 @@
+.box {
+  padding: 2px 0 0 0;
+  overflow: auto;
+}
+
+/* Toolbar */
+.box .toolbar {
+  display: flex;
+  background-color: black;
+  height: 50px;
+}
+.box .toolbar li {
+  width: 50px;
+  text-align: center;
+  padding: 17px 0;
+  color: #6a6a6a;
+  font-weight: bold;
+  cursor: pointer;
+}
+.box ul li:first-child {
+  padding-top: 10px;
+}
+
+.box ul .white {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Content */
+.wrapper-content {
+  width: 100%;
+  display: inline-flex;
+}
+/* Image Left */
+.w-40 {
+  float: left;
+  width: 40%;
+  /* height: 1000px; */
+  /* border-right: 15px solid #e1e1e1; */
+}
+.w-40 img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Right Form */
+.w-60 {
+  width: 60%;
+  height: 768px;
+  float: left;
+  /* overflow: auto; */
+}
+.box-body {
+  border: unset;
+}
+.tbl-box {
+  margin: 0;
+}
+.tbl-box th {
+  text-align: left;
+  background: none;
+  border-right: 0;
+}
+.tbl-box .custom-td {
+  border-right: unset;
+  border-left: unset;
+}
+.border-right {
+  border-right: solid 1px #e1e1e1 !important;
+}
+.content {
+  padding: 5px 10px;
+  border-left: 0;
+}
+.tab-blank {
+  width: 100%;
+  height: 35px;
+  border: solid 1px #e1e1e1;
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+}
+.tab-blank > i {
+  margin-top: 7px;
+  margin-right: 3px;
+}
+select {
+  height: 34px !important;
+  border-radius: 0;
+}
+.insurance-custom-date {
+  position: relative;
+  width: 30%;
+}
+.insurance-custom-date mat-datepicker-toggle {
+  position: absolute;
+  right: 0;
+}
+table.tbl-box td span {
+  line-height: 35px;
+}
+.mat-input-element:disabled {
+  background: transparent;
+  color: inherit;
+}
+.box-body > .btn-group {
+  text-align: right;
+  width: 100%;
+  margin-top: 10px;
+  clear: both;
+  float: left;
+}
+.box-body > .btn-group > button:last-child {
+  margin-right: 5px;
+}
+.box-body > .btn-group > button {
+  height: 35px;
+  float: right;
+}
+.tbl-box tr td input {
+  border-radius: 0;
+  height: 34px;
+}
+.ml-10{
+  margin-left: 10px;
+}
+input.input-label {
+  border: none;
+  padding: 0;
+  background: transparent;
+  height: unset;
+}
+input.input-label:focus {
+  box-shadow: none;
+  border: 1px #e1e1e1 solid;
+  padding: 0px 5px;
+  border-radius: 0;
+}
+.tokuyaku-row {
+  float: left;
+  width: 100%;
+  line-height: 50px;
+  padding: 0px 10px;
+  border: 1px #e1e1e1 solid;
+  border-top: 0; 
+}
+.tokuyaku-row span {
+  min-width: 200px;
+}
+.tokuyaku-row span.float-right{
+  text-align: right;
+}
+.tokuyaku-title {
+  background-color: #eeeeee;
+}
+.tokuyaku-title i:first-child {
+  margin-right: 5px;
+}
+.tokuyaku-title i:last-child {
+  float: right;
+  line-height: 50px;
+}
+.row-add {
+  padding: 0;
+}
+.add-tokuyaku {
+  display: flex;
+  align-items: center;
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+div.form-title {
+  border-bottom: 1px #ccc solid;
+  background-color: #EFEFEF;
+  padding: 15px 5px;
+  font-weight: bold;
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+div.form-title > i {
+  cursor: pointer;
+}
+.div-tokuyaku:first-child {
+  margin-top: 30px;
+}
+div.form-add, div.form-row {
+  border-bottom: 1px #e1e1e1 solid;
+  border-top: 0;
+  padding: 15px 10px 15px 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+div.form-add, div.row-title span {
+  cursor: pointer;
+}
+div.form-title .minus-icon, div.form-row .minus-icon {
+  width: 30px;
+  height: 30px;
+  background-size: 30px;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+div.form-row div.row-tool {
+  float: left;
+  width: 5%;
+  display: flex;
+  align-items: center;
+}
+div.form-row div.row-content {
+  float: left;
+  width: 95%;
+}
+div.form-row div.row-content div.row-title {
+  float: left;
+}
+div.form-row div.row-content div.row-value {
+  float: right;
+}
+div.form-row div.row-content div.row-value-left {
+  float: left;
+}
+div.form-row div.row-content div.row-comment {
+  float: left;
+  width: 100%;
+}
+div.form-add .red-circle-add {
+  margin-bottom: 0px;
+}
+div.form-row > div > div {
+  width: unset;
+}
+.form-add .fa-plus-circle {
+  color: #30c357;
+}
+.div-tokuyaku {
+  float: left;
+  width: 100%;
+}

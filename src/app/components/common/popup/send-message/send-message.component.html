@@ -1,0 +1,16 @@
+<div class="no-padding remodal remodal-is-initialized remodal-is-opened" [ngClass]="{'bg-blue': data.type !== 'reject'}">
+    <div class="popup-title custom-modal-title">{{data.popupTitle}}</div>
+    <div class="popup-container">
+        <div class="popup-content">
+            <p>{{data.messageTitle}}</p>
+            <textarea rows="10" [(ngModel)]="data.messageContent"></textarea>
+        </div>
+        <div class="popup-footer custom-modal-footer">
+            <button type="button" class="btn-white left" (click)="doClose()">閉じる</button>
+            <button type="button" class="normal-bt right" 
+                (click)="doSend()"
+                [disabled]="data.messageContent === null || data.messageContent.trim() === ''" 
+                [ngClass]="{'input-disable': data.messageContent === null || data.messageContent.trim() === ''}">送信</button>
+        </div>
+    </div>
+</div>

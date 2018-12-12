@@ -1,0 +1,12 @@
+{
+    "customerName": "顧客名",
+    "lifeCategory": "死亡の保障",
+    "medicalCategory": "病気の保障",
+    "savingsCategory": "貯金を兼ねて備える",
+    "carCategory": "自動車の保険",
+    "houseCategory": "住まいの保険",
+    "sunCategory": "旅行・レジャー・その他の保険",
+    "airplaneCategory": "旅行の保険",
+    "otherCategory": "その他の保険",
+    "autoCategory": "自動入力中"
+}

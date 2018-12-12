@@ -1,0 +1,27 @@
+<div class="no-padding remodal remodal-is-initialized remodal-is-opened">
+    <div class="popup-title custom-modal-title">保険商品名選択</div>
+    <div class="popup-container">
+        <div class="popup-content">
+            <table class="noborder-table input-table">
+                <tr class="tr-line-bottom">
+                    <td>
+                        <input 
+                            [formControl]="productNameFormControl" 
+                            [ngClass]="{'input-error': productNameFormControl.hasError('required') && (productNameFormControl.dirty || productNameFormControl.touched)}"
+                            type="text" 
+                            placeholder="保険種類名を入力してください。">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="popup-footer custom-modal-footer">
+            <button
+                type="button" 
+                class="normal-bt" 
+                (click)="saveProduct()"
+                [disabled]="productNameFormControl.hasError('required')" 
+                [ngClass]="{'input-disable': productNameFormControl.hasError('required')}"
+                >保存</button>
+        </div>
+    </div>
+</div>

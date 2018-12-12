@@ -1,0 +1,23 @@
+input[type="number"]{
+    text-align: right;
+    width: 80%;
+}
+table tr {
+    height: 50px;
+}
+table tr td {
+    text-align: left;
+    padding-right: 10px;
+}
+input[type="number"].input-full {
+    width: 100%;
+}
+input {
+    height: 32.38px;
+}
+app-keiyaku-field > div > div {
+    width: 100%;
+}
+.mat-select-trigger {
+    height: 30px;
+}

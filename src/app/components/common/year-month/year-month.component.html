@@ -1,0 +1,9 @@
+<div class="insurance-custom-date" [ngClass]="{'full-date': fieldDisplay.name === 'Hosho'}">
+  <input matInput
+      [matDatepicker]="datePicker" 
+      [formControl]="formModel"
+      [ngClass]="{'input-error': fieldDisplay.required === 1 && formModel.hasError('required') && (formModel.dirty || formModel.touched)}"
+      placeholder="{{fieldDisplay.text}}">
+  <mat-datepicker-toggle matSuffix [for]="datePicker" class="ocr-date"></mat-datepicker-toggle>
+  <mat-datepicker #datePicker disabled="false" startView="multi-year" panelClass="date-popup-custom" (yearSelected)="chosenYearHandler($event)" (monthSelected)="chosenMonthHandler($event, datePicker)"></mat-datepicker>
+</div>

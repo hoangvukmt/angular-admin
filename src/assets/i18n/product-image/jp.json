@@ -1,0 +1,12 @@
+{
+    "customerName": "顧客名",
+    "shoukenImage": "保険証券画像",
+    "relationImage": "関連資料画像",
+    "backButton": "戻る",
+    "uploadButton": "画像追加",
+    "message": {
+        "uploadSuccess": "ファイルアップロードに成功しました。",
+        "imageLimited": "添付画像の総数が最大5個です。"
+    },
+    "confirmDelete": "本当に削除しますか。"
+}

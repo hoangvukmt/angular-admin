@@ -1,0 +1,27 @@
+@media (max-width: 1200px) {
+  table.tbl-box td, table.tbl-box td.head, table.tbl-box th {
+    height: 62px; 
+  } 
+}
+@media (max-width: 800px) {
+  table.tbl-box td, table.tbl-box td.head, table.tbl-box th {
+    height: 83px; 
+  }
+}
+
+button.btn-red[disabled] {
+  opacity: 0.5; 
+}
+.tbl-scroll tr td:first-child:not(.col-head) {
+  border-left: 0;
+}
+mat-select, mat-option {
+  text-align: center;
+}
+.mat-icon {
+  display: unset;
+  color: #d4081d;
+}
+.select-ios{
+  font-size: 12px;
+}

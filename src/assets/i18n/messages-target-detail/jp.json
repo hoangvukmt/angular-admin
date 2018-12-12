@@ -1,0 +1,33 @@
+{
+    "target": "配備対象",
+    "status": "加入状況",
+    "perior": "期間",
+    "person": "配信人数",
+    "title": "件名",
+    "btnBack": "戻る",
+    "people": "人",
+    "all": "すべて",
+    "notActiveManyDay": "日間起動していないユーザー",
+    "notActiveOneDay": "日以内に起動したユーザー",
+    "statusRegis": {
+        "notDefinition": "指定なし",
+        "definition": "指定あり",
+        "access": "加入",
+        "notAccess": "未加入"
+    },
+    "targetOption": {
+        "all": "すべて",
+        "person": "個別",
+        "men": "男性",
+        "women": "女性",
+        "married": "既婚者",
+        "single": "未婚者",
+        "hasChild": "子供有",
+        "noChild": "子供無",
+        "20": "20代",
+        "30": "30代",
+        "40": "40代",
+        "50": "50代",
+        "60": "60代"
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "customerName": "顧客名",
+    "tableInfo": {
+        "name": "お名前",
+        "relation": "続柄",
+        "sex": "性別",
+        "birthday": "生年月日",
+        "age": "満年齢",
+        "createDate": "登録日"
+    },
+    "keiyakuTitle": "加入済保険",
+    "keiyakuTable": {
+        "checkbox": "対象",
+        "contracDate": "契約日",
+        "companyName": "保険会社",
+        "productName": "保険商品",
+        "money": "保障額",
+        "hkikan": "保険期間",
+        "pkikan": "払込期間",
+        "haraikata": "払方",
+        "hokenP": "保険料"
+    },
+    "memo": "メモ入力",
+    "btnSaveMemo": "メモ登録",
+    "btnIqSystem": "IQSystemに反映",
+    "btnAsSystem": "AS-Systemへ登録",
+    "btnRemove": "顧客削除",
+    "message": {
+        "memoNotNull": "メモ入力を空欄にしてはいけません。",
+        "updateSuccess": "メモ更新に成功しました。",
+        "err": "エラー発生",
+        "deleteSuccess": "完了通知・顧客削除が完了しました。",
+        "sendSuccess": "登録が完了しました。"
+    },
+    "age": "歳",
+    "money": "円",
+    "confirmIQ": "登録しますか",
+    "confirmDelete": "本当に削除しますか。"
+}

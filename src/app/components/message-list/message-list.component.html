@@ -1,0 +1,66 @@
+<div class="contents">
+  <section>
+      <app-header></app-header>
+  </section>
+  <section>
+      <app-menu [objMenu]="objMenu"></app-menu>
+  </section>
+  <section>
+      <div class="box">
+          <app-tab-common [tabClass]="'menu-1'" [objTab]="objTab"></app-tab-common>
+          <div id="tab-3" class="tab-content tab-active">
+            <div class="tab-inner">
+                <table class="tbl-box">
+                    <colgroup>
+                        <col width="10%">
+                        <col width="90%">
+                    </colgroup>
+                    <tr>
+                        <td class="title">{{'customerName' | translate}}</td>
+                        <td class="content">{{customerInfo.CustommerFullName}}</td>
+                    </tr>
+                </table>
+                <div *ngFor="let item of lsMessages">
+                    <h2>{{item.CreateDate | date:'yyyy/MM/dd'}}</h2>
+                    <div class="box-body">
+                        <div class="timeline">
+                            <div *ngFor="let message of strToArr(item.Messages); let i = index" class="timeline-container timeline-item" [ngClass]="{'timeline-operator': message.IconNumber === 1}">
+                                <div class="timeline-content"> 
+                                    <div>
+                                        {{message.CreateDate}} {{message.TantoName}}                                        
+                                        <i *ngIf="(message.Message.length >= 40 || message.lsImage.length > 0 || message.lsPdf.length > 0) && !expanded[i]" class="float-right fas fa-chevron-down" (click)="toggle(i)"></i>
+                                        <i *ngIf="(message.Message.length >= 40 || message.lsImage.length > 0 || message.lsPdf.length > 0) && expanded[i]" class="float-right fas fa-chevron-up" (click)="toggle(i)"></i>
+                                    </div>
+                                    <div class="text-bold">
+                                        {{message.MessageTitle}}
+                                    </div>
+                                    <div *ngIf="message.Message.length < 40" [innerHTML]="message.Message"></div>
+                                    <div *ngIf="message.Message.length >= 40 && !expanded[i]" [innerHTML]="message.Message.substr(0, 40) + '...'"></div>
+                                    <div *ngIf="message.Message.length >= 40 && expanded[i]" [innerHTML]="message.Message"></div>
+                                    <div *ngIf="(message.lsImage.length > 0 || message.lsPdf.length > 0) && expanded[i]">
+                                        <div class="list-img">
+                                            <div *ngFor="let img of message.lsImage" class="image-item pointer">                                                                                                
+                                                <div>
+                                                    <img #imgs id="messageImg{{i}}"  class="pointer" src="{{urlAPI}}api/getMessageImg?file_id={{img.FileID}}&token={{token}}&{{random}} " (click)="viewImage(img.FileID);" />
+                                                </div>
+                                            </div>
+                                            <div *ngFor="let pdf of message.lsPdf" class="image-item pointer">                                                                                                
+                                                <div>
+                                                    <img class="pointer" src="{{ROOT_URL}}assets/img/pdf.png" (click)="viewPdf(pdf.ResultPath);" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                    <div *ngIf="i === (strToArr(item.Messages).length - 1)">
+                                        <i (click)="goToSendMessage(item)" class="float-right fas fa-reply"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+  </section>
+</div>

@@ -1,0 +1,33 @@
+{
+    "btnSelect": "ターゲット選択",
+    "btnSearch": "検索",
+    "time": "期間",
+    "day": "日",
+    "month": "月",
+    "year": "年",
+    "perior": {
+        "all": "すべて",
+        "allDay": "日間起動していないユーザー",
+        "oneDay": "日以内に起動したユーザー"
+    },
+    "message": {
+        "fromDateGreaterToDate": "開始日を終了日より大きくしてはいけません。",
+        "monthRequired": "月を入力してください。",
+        "dayRequired": "日のみの入力は検索できません"
+    },
+    "targetOption": {
+        "all": "すべて",
+        "person": "個別",
+        "men": "男性",
+        "women": "女性",
+        "married": "既婚者",
+        "single": "未婚者",
+        "hasChild": "子供有",
+        "noChild": "子供無",
+        "20": "20代",
+        "30": "30代",
+        "40": "40代",
+        "50": "50代",
+        "60": "60代"
+    }
+}

@@ -1,0 +1,19 @@
+table.tbl-769 {
+    display: none;
+    width: 100%;
+}
+@media only screen and (max-width: 769px) {
+    table.tbl-box td.title {
+        width: 30%;
+    }
+    table.tbl-769 {
+        display: table;
+        width: 100%;
+    }
+    table.tbl-769 td.title {
+        width: unset;
+    }
+    table.tbl-90, table.tbl-full {
+        display: none;
+    }
+}

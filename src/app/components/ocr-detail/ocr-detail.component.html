@@ -1,0 +1,395 @@
+<div class="contents" (window:resize)="onResize($event)" [style.height.px]="heightBody + 140">
+  <section>
+    <app-header></app-header>
+  </section>
+  <section>
+    <app-menu [objMenu]="objMenu"></app-menu>
+  </section>
+  <section>
+    <div class="wrapper-content">
+      <div class="w-40">
+        <image-editor [(keiyakuId)]="keiyakuDetail.keiyaku_no" [(actionClose)]="imageClose"></image-editor>
+      </div>
+      <div class="w-60">
+        <div style="background-color: black; height: 50px"></div>
+        <div class="box" [style.height.px]="heightBody">
+          <div class="box-body">
+            <table class="tbl-box">
+              <colgroup>
+                <col width="25%">
+                <col width="75%">
+              </colgroup>
+
+              <tr *ngFor="let item of lsMainItem">
+                <th class="title">
+                  {{item.HoshoName}} <span *ngIf="item.requiredF === 1">(<span class="text-red">*</span>)</span>
+                </th>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '1'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.Agent.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Agent" 
+                      [(formModel)]="agentFormControl"
+                      [(secondModel)]="noneFormControl"
+                      (eventOut)="choseAgency($event)"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.Agent.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Agent" 
+                      [(formModel)]="agentFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.Agent.type !== 70 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '2'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.Company.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Company" 
+                      [(formModel)]="companyFormControl"
+                      [(secondModel)]="noneFormControl"
+                      (eventOut)="addInsuranceCompany($event)"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.Company.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Company" 
+                      [(formModel)]="companyFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.Company.type !== 50 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '3'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.Category.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [(fieldDisplay)]="fieldOfKeiyaku.Category" 
+                      [(formModel)]="categoryFormControl"
+                      [(secondModel)]="noneFormControl"
+                      (eventOut)="changeCategoryF($event)"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.Category.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Category" 
+                      [(formModel)]="categoryFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.Category.type !== 90 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '4'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.Product.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Product" 
+                      [(formModel)]="productFormControl"
+                      [(secondModel)]="noneFormControl"
+                      (eventOut)="choseInsuranceType($event)"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.Product.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Product" 
+                      [(formModel)]="productFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.Product.type !== 60 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '5'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.PolicyNo.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.PolicyNo"
+                      [(formModel)]="policyNoFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.PolicyNo.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.PolicyNo" 
+                      [(formModel)]="policyNoFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.PolicyNo.type !== 1 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '6'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.Status.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Status" 
+                      [(formModel)]="statusFormControl"
+                      [(secondModel)]="noneFormControl"
+                      (eventOut)="changeOption('status')"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.Status.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Status" 
+                      [(formModel)]="statusFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.Status.type !== 20 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '7'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.FamilyNo.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.FamilyNo" 
+                      [(formModel)]="familyNoFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.FamilyNo.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.FamilyNo" 
+                      [(formModel)]="familyNoFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.FamilyNo.type !== 40 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '8'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.HihoFamilyNo.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.HihoFamilyNo" 
+                      [(formModel)]="hihoFamilyNoFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.HihoFamilyNo.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.HihoFamilyNo" 
+                      [(formModel)]="hihoFamilyNoFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.HihoFamilyNo.type !== 40 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '9'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.ContractDate.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.ContractDate" 
+                      [(formModel)]="contractDateFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.ContractDate.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.ContractDate" 
+                      [(formModel)]="contractDateFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.ContractDate.type !== 30 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '10'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.StartDate.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.StartDate" 
+                      [(formModel)]="contractDateFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.StartDate.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.StartDate" 
+                      [(formModel)]="contractDateFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.StartDate.type !== 30 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '11'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.HokenEndDate.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.HokenEndDate" 
+                      [(formModel)]="hokenEndDateFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.HokenEndDate.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.HokenEndDate" 
+                      [(formModel)]="hokenEndDateFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.HokenEndDate.type !== 30 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '12'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.HKikan.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.HKikan"
+                      [(formModel)]="hKikanFormControl"
+                      [(secondModel)]="hKikanFFormControl"
+                      (eventOut)="changeOption('hKikanF')"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.HKikan.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.HKikan" 
+                      [(formModel)]="hKikanFFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.HKikan.type !== 80 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '13'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.HokenP.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.HokenP"
+                      [(formModel)]="hokenPFormControl"
+                      [(secondModel)]="currencyFFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.HokenP.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.HokenP" 
+                      [(formModel)]="hokenPFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.HokenP.type !== 100 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '14'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.Haraikata.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Haraikata"
+                      [(formModel)]="haraikataFormControl"
+                      [(secondModel)]="noneFormControl"
+                      (eventOut)="changeOption('haraikata')"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.Haraikata.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Haraikata" 
+                      [(formModel)]="haraikataFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.Haraikata.type !== 20 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '15'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.PKikan.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.PKikan"
+                      [(formModel)]="pKikanFormControl"
+                      [(secondModel)]="pKikanFFormControl"
+                      (eventOut)="changeOption('pKikanF')"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.PKikan.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.PKikan" 
+                      [(formModel)]="pKikanFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.PKikan.type !== 80 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '16'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.ForeignF.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.ForeignF"
+                      [(formModel)]="foreignFFormControl"
+                      [(secondModel)]="noneFormControl"
+                      (eventOut)="changeOption('foreignF')"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.ForeignF.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.ForeignF" 
+                      [(formModel)]="foreignFFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.ForeignF.type !== 20 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '17'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.ContactAccident.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.ContactAccident"
+                      [(formModel)]="contactAccidentFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.ContactAccident.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.ContactAccident" 
+                      [(formModel)]="contactAccidentFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.ContactAccident.type !== 3 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '18'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.ContactCarFailure.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.ContactCarFailure"
+                      [(formModel)]="contactCarFailureFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.ContactCarFailure.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.ContactCarFailure" 
+                      [(formModel)]="contactCarFailureFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.ContactCarFailure.type !== 3 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '19'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.CarName.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.CarName"
+                      [(formModel)]="carNameFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.CarName.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.CarName" 
+                      [(formModel)]="carNameFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.CarName.type !== 0 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '20'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.RegistNo.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.RegistNo"
+                      [(formModel)]="registNoFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.RegistNo.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.RegistNo" 
+                      [(formModel)]="registNoFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.RegistNo.type !== 0 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+                <td class="content" *ngIf="item.HoshoNo.toString() === '21'">
+                  <app-keiyaku-field *ngIf="fieldOfKeiyaku.Address.type !== 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Address"
+                      [(formModel)]="addressFormControl"
+                      [(secondModel)]="noneFormControl"></app-keiyaku-field>
+                  <app-year-month *ngIf="fieldOfKeiyaku.Address.type === 35"
+                      [(keiyakuDetail)]="keiyakuDetail" 
+                      [fieldDisplay]="fieldOfKeiyaku.Address" 
+                      [(formModel)]="addressFormControl"
+                      [(secondModel)]="noneFormControl"></app-year-month>
+                  <span *ngIf="fieldOfKeiyaku.Address.type !== 0 && invalidType" class="text-red">({{'errorType' | translate}})</span>
+                </td>
+              </tr>
+            </table>
+            <div class="checkRegion">
+              <div class="form-row" *ngFor="let shukeiyaku of listShukeiyaku, let i = index">
+                <div class="row-tool">
+                  <i (click)="deleteShukeiyaku(true,i)" class="fas fa-minus-circle text-red pointer"></i>
+                </div>
+                <div class="row-content pointer" (click)="goDetailHosho(true,i)">
+                  <div class="row-title">
+                    {{shukeiyaku.HoshoName}}
+                  </div>
+                  <div class="row-value">
+                    {{mapValueToViewValueHosho(true, i)}}
+                  </div>
+                  <div class="row-comment">
+                    {{shukeiyaku.Comment}}
+                  </div>
+                </div>
+              </div>
+              <div class="form-row form-add" (click)="addHosho(true, 0)">
+                <div class="row-tool">
+                  <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="row-content">
+                  {{'addHosho' | translate}}
+                </div>
+              </div>
+            </div>
+            <div class="checkRegion">
+              <div class="div-tokuyaku" *ngFor='let tokuyaku of listTokuyaku, let i = index'>
+                <div class="form-row form-title">
+                  <div class="row-tool">
+                    <i (click)="deleteTokuyaku(i)" class="fas fa-minus-circle text-red pointer"></i>
+                  </div>
+                  <div class="row-content pointer">
+                    <span (click)="editTokuyaku(i)">{{tokuyaku.TokuyakuName}}</span>
+                    <i class="fas fa-angle-down float-right" onclick="collapseTokuyaku(this)"></i>
+                  </div>
+                </div>
+                <div class="div-collapse">
+                  <div class="form-row" style="padding-left: 20px;" *ngFor="let tokuyakuHosho of tokuyaku.tokuyakuHosho, let index = index">
+                    <div class="row-tool">
+                      <i (click)="deleteShukeiyaku(false,index,i)" class="fas fa-minus-circle text-red pointer"></i>
+                    </div>
+                    <div class="row-content pointer" (click)="goDetailHosho(false,index,i)">
+                      <div class="row-title">
+                        {{tokuyakuHosho.HoshoName}}
+                      </div>
+                      <div class="row-value">
+                        {{mapValueToViewValueHosho(false, index, i)}}
+                      </div>
+                      <div class="row-comment">
+                        {{tokuyakuHosho.Comment}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row form-add" style="padding-left: 20px;" (click)="addHosho(false,i)">
+                    <div class="row-tool">
+                      <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="row-content">
+                      {{'addHosho' | translate}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div (click)="addTokuyaku()" class="form-row form-add">
+              <div class="row-tool">
+                <i class="fas fa-plus-circle"></i>
+              </div>
+              <div class="row-content">
+                {{'addTokuyaku' | translate}}
+              </div>
+            </div>
+            
+            <div class="btn-group">
+              <button (click)="doAccess()" class="blue-label">{{'btnBlue' | translate}}</button>
+              <button (click)="doReject()" class="btn-red">{{'btnRed' | translate}}</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,21 @@
+.image-item {
+    height: 220px;
+}
+.image-item:first-child {
+    margin-left: 0;
+}
+.list-img {
+    margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 767px) {
+    table.tbl-box td.title {
+        width: 30%;
+    }
+	.timeline {
+        margin-left: 10%;
+    }
+    .timeline-container {
+        width: 93%;
+    }
+}

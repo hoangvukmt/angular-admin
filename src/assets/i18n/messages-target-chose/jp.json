@@ -1,0 +1,56 @@
+{
+    "target": {
+        "title": "配信対象",
+        "all": "すべて",
+        "person": "個別",
+        "men": "男性",
+        "women": "女性",
+        "married": "既婚者",
+        "single": "未婚者",
+        "hasChild": "子供有",
+        "noChild": "子供無",
+        "20": "20代",
+        "30": "30代",
+        "40": "40代",
+        "50": "50代",
+        "60": "60代"
+    },
+    "person": "人",
+    "status": {
+        "title": "加入状況",
+        "notDefinition": "指定なし",
+        "definition": "指定あり",
+        "access": "加入",
+        "notAccess": "未加入"
+    },
+    "perior": {
+        "title": "期間",
+        "all": "すべて",
+        "allDay": "日間起動していないユーザー",
+        "oneDay": "日以内に起動したユーザー"
+    },
+    "messageTitle": "タイトル",
+    "messageContent": "メッセージテキスト",
+    "btnCaculator": "配信対象計算",
+    "btnAttach": "画像添付",
+    "btnSend": "送信",
+    "btnBack": "戻る",
+    "message": {
+        "targetNotNull": "配信対象を空欄にしてはいけません。",
+        "kanyuHoshoCategoryNotNull": "保険分類を空欄にしてはいけません。",
+        "kanyuNotNull": "加入状況を空欄にしてはいけません。",
+        "kikanDaysAllDayNotNull": "日数を空欄にしてはいけません。",
+        "kikanDaysOneDayNotNull": "日数を空欄にしてはいけません。",
+        "messageTitleNotNull": "タイトルを空欄にしてはいけません。",
+        "messageNotNull": "メッセージテキストを空欄にしてはいけません。",
+        "uploadSuccess": "ファイルアップロードに成功しました。",
+        "imageLimited": "添付画像の総数が最大5個です。",
+        "actionSuccess": "完了通知・送信が完了しました。",
+        "err": "エラー発生",
+        "caculatorSuccess": "配信対象計算に成功しました。",
+        "deleteSuccess": "完了通知・顧客削除が完了しました。",
+        "targetNull": "配信対象が存在しません!"
+    },
+    "confirmDelete": "本当に削除しますか。",
+    "confirmSend": "メッセージを送信する。<br />よろしいでしょうか？"
+}

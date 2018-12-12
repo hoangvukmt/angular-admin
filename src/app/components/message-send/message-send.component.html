@@ -1,0 +1,62 @@
+<div class="contents">
+    <section>
+        <app-header></app-header>
+    </section>
+    <section>
+        <app-menu [objMenu]="objMenu"></app-menu>
+    </section>
+    <section>
+        <div class="box">
+            <app-tab-common [objTab]="objTab"></app-tab-common>
+            <div id="tab-1" class="tab-content tab-active">
+                <div class="tab-inner">
+                    <table class="tbl-box">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="80%">
+                            <col width="10%">
+                        </colgroup>
+                        <tr>
+                            <td class="content no-border-top no-border-left no-border-right">{{'to' | translate}}:</td>
+                            <td class="content no-border-top no-border-left no-border-right">
+                                {{'toText' | translate}}
+                            </td>
+                            <td class="content no-border center" rowspan="2">
+                                <img class="avatar-message" src="{{ROOT_URL}}assets/img/men.png" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="content no-border-left no-border-right">{{'subject' | translate}}:</td>
+                            <td class="content no-border-left no-border-right">
+                                <input [(ngModel)]="messageModel.message_title" type="text" id="messageTitle" maxlength="100" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="content no-border" colspan="3">
+                                <textarea [(ngModel)]="messageModel.message" id="messageContent" class="margin-top-15" rows="15" maxlength="4000"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="content no-border" colspan="3">
+                                <div class="list-img">
+                                    <div *ngFor="let item of lsFiles; let i=index" class="image-item">
+                                        <div>
+                                            <i (click)="removeImage(i)" class="fas fa-trash-alt"></i>
+                                            <img (click)="viewImage(item, 'message-image')" (load)="genImage(item, i)" id="messageImg{{i}}"  class="pointer" src="{{ROOT_URL}}assets/img/blank-img.png" />
+                                        </div>
+                                        <span>{{genFileName()}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-bottom-tool">
+                    <button (click)="doBack()" *ngIf="menu === 2" type="button" class="btn-white btn-pading-30">{{'btnBack' | translate}}</button>
+                    <button (click)="doSave()" type="button" class="btn-red float-right">{{'btnSend' | translate}}</button>
+                    <button (click)="doAttach()" type="button" class="btn-red float-right">{{'btnUpload' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

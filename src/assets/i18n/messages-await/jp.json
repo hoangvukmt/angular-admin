@@ -1,0 +1,21 @@
+{
+    "time": "期間",
+    "day": "日",
+    "month": "月",
+    "year": "年",
+    "message": {
+        "fromDateGreaterToDate": "開始日を終了日より大きくしてはいけません。",
+        "monthRequired": "月を入力してください。",
+        "dayRequired": "日のみの入力は検索できません"
+    },
+    "messageType": "依頼内容",
+    "messageType1": "お問い合わせ",
+    "messageType2": "簡易診断依頼",
+    "messageType3": "お試し分析依頼",
+    "supportType": "対応状況",
+    "supportType1": "未対応",
+    "supportType2": "対応済",
+    "agent": "代理店",
+    "btnSearch": "検索",
+    "all": "すべて"
+}

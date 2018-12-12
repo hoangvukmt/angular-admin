@@ -1,0 +1,12 @@
+<div *ngIf="isImage && !isLocal && !isImageMessage" class="popup-upload center">
+    <img class="view-image" onload="imageLoad(this)" src="{{urlAPI}}api/getFileImg?group_id={{data.data.GroupID}}&file_id={{data.data.FileID}}&token={{token}}&{{random}}" />
+</div>
+<div *ngIf="!isImage && !isLocal && !isImageMessage" class="popup-upload center">
+    <img class="view-image" onload="imageLoad(this)" src="{{urlAPI}}api/getFileRelation?user_no={{data.data.UserNo}}&file_name={{data.data.FileName}}&token={{token}}&{{random}}" />
+</div>
+<div *ngIf="isLocal && !isImageMessage" class="popup-upload center">
+    <img (load)="genImage()" onload="imageLoad(this)" id="messageImagePreview" class="view-image" src="{{ROOT_URL}}assets/img/blank-img.png" />
+</div>
+<div *ngIf="isImageMessage" class="popup-upload center">
+    <img class="view-image" onload="imageLoad(this)" src="{{urlAPI}}api/getMessageImg?file_id={{data.data}}&token={{token}}&{{random}}" />
+</div>

@@ -1,0 +1,139 @@
+<div class="contents">
+    <section>
+        <app-header></app-header>
+    </section>
+    <section>
+        <app-menu [objMenu]="objMenu"></app-menu>
+    </section>
+    <section>
+        <div class="box">
+            <app-tab-common [objTab]="objTab"></app-tab-common>
+            <div id="tab-1" class="tab-content tab-active">
+                <div class="tab-inner">
+                    <table class="tbl-box">
+                        <colgroup>
+                            <col width="15%">
+                            <col width="85%">
+                        </colgroup>
+                        <tr>
+                            <td class="title">顧客名</td>
+                            <td class="content">
+                                {{ keiyakuData.LastName }} {{ keiyakuData.FirstName }}
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="bg-red">
+                        <h2>商品詳細</h2>
+                    </div>
+
+                    <div class="right col-100 tool-head">
+                        <span>月払保険料</span>{{hokenPMounth}}<span>年間払保険料</span>{{hokenPYear}}
+                    </div>
+                    <table class="tbl-box margin-top-15">
+                        <colgroup>
+                            <col width="15%">
+                            <col width="85%">
+                        </colgroup>
+                        <tr *ngFor="let item of lsKeiyakuHosho">
+                            <td class="title">{{item.HoshoName}}</td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '1'">
+                                {{keiyakuData.AgentName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '2'">
+                                {{keiyakuData.CompanyName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '3'">
+                                {{keiyakuData.HoshoCategoryFName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '4'">
+                                {{keiyakuData.ProductName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '5'">
+                                {{keiyakuData.PolicyNo}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '6'">
+                                {{keiyakuData.StatusName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '7'">
+                                {{keiyakuData.FamilyName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '8'">
+                                {{keiyakuData.HihoFamilyName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '9'">
+                                {{keiyakuData.ContractDate | date:'yyyy/MM/dd'}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '10'">
+                                {{keiyakuData.ContractDate | date:'yyyy/MM/dd'}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '11'">
+                                {{keiyakuData.HokenEndDate | date:'yyyy/MM/dd'}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '12'">
+                                {{keiyakuData.HKikanName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '13'">
+                                {{convertToMoney(keiyakuData.HokenP, false)}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '14'">
+                                {{keiyakuData.HaraikataName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '15'">
+                                {{keiyakuData.PKikanName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '16'">
+                                {{keiyakuData.ForeignFName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '17'">
+                                {{keiyakuData.ContactAccident}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '18'">
+                                {{keiyakuData.ContactCarFailure}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '19'">
+                                {{keiyakuData.CarName}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '20'">
+                                {{keiyakuData.RegistNo}}
+                            </td>
+                            <td class="content" *ngIf="item.HoshoNo.toString() === '21'">
+                                {{keiyakuData.Address}}
+                            </td>
+                        </tr>
+                    </table>
+                    <h2>主契約</h2>
+                    <table class="tbl-box margin-top-15">
+                        <colgroup>
+                            <col width="15%">
+                            <col width="85%">
+                        </colgroup>
+                        <tr *ngFor="let item of shukeiyakuData">
+                            <td class="title">{{ item.HoshoName }}</td>
+                            <td class="content">
+                                {{mapValueToViewValueHosho(item)}}
+                            </td>
+                        </tr>
+                    </table>
+                    <div *ngFor="let item of tokuyakuData">
+                        <h2 class="headerGroupTable">{{ item.TokuyakuName }}</h2>
+                        <table class="tbl-box margin-top-15 insideTable">
+                            <colgroup>
+                                <col width="15%">
+                                <col width="85%">
+                            </colgroup>
+                            <tr *ngFor="let hosho of strToArr(item.tokuyakuHosho)">
+                                <td class="title">{{ hosho.HoshoName }}</td>
+                                <td class="content">
+                                    {{mapValueToViewValueHosho(hosho)}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <button (click)="doBack()" type="button" class="btn-white btn-pading-30">戻る</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

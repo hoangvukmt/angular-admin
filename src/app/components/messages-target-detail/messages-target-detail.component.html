@@ -1,0 +1,81 @@
+<div class="contents">
+    <section>
+        <app-header></app-header>
+    </section>
+    <section>
+        <app-menu [objMenu]="objMenu"></app-menu>
+    </section>
+    <section>
+        <div class="box">
+            <app-tab-common [objTab]="objTab"></app-tab-common>
+            <div id="tab-1" class="tab-content tab-active">
+                <div class="tab-inner">
+                    <table class="tbl-box">
+                        <colgroup>
+                            <col width="15%">
+                            <col width="85%">
+                        </colgroup>
+                        <tr>
+                            <td class="title">{{'target' | translate}}</td>
+                            <td class="content">
+                                {{haishinLogDetail.TargetName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">{{'status' | translate}}</td>
+                            <td class="content">
+                                {{haishinLogDetail.KanyuShiteiName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">{{'perior' | translate}}</td>
+                            <td class="content">
+                                {{haishinLogDetail.KikanName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="title">{{'person' | translate}}</td>
+                            <td class="content">
+                                {{haishinLogDetail.TargetCount}} {{'people' | translate}}
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="tbl-box margin-top-15">
+                        <colgroup>
+                            <col width="15%">
+                            <col width="85%">
+                        </colgroup>
+                        <tr>
+                            <td class="no-border right">{{'title' | translate}}:</td>
+                            <td class="content">
+                              {{haishinLogDetail.MessageTitle}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="no-border"></td>
+                            <td class="content no-border no-pading">
+                                <textarea class="margin-top-15 no-radius" rows="10" readonly>{{haishinLogDetail.Message}}</textarea>
+                            </td>
+                        </tr>
+                        <tr *ngIf="lsImages.length > 0">
+                            <td class="no-border"></td>
+                            <td class="content no-border no-pading">
+                                <div class="list-img">
+                                    <div *ngFor="let item of lsImages" (click)="viewImage(item, 'image')" class="image-item pointer">
+                                        <div>
+                                            <img onload="imageLoad(this)" src="{{urlAPI}}api/getFileImg?group_id={{item.GroupID}}&file_id={{item.FileID}}&token={{token}}&{{random}}" />
+                                        </div>
+                                        <span>{{item.MenuFileName}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-bottom-tool">
+                    <button (click)="doBack()" type="button" class="btn-white btn-pading-30">{{'btnBack' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

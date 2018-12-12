@@ -1,0 +1,296 @@
+@import "https://use.fontawesome.com/releases/v5.1.1/css/all.css";
+
+.header-edit {
+    width: 100%;
+    height: 50px; /* ツール高さ */
+    z-index: 999;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    padding-top: 2px;
+    background-color:#000000;
+    color:#ffffff;
+}
+
+.header-edit span {
+    color: #fff;
+    font-weight: bold;
+}
+
+.div-canvas{
+    display: flex; 
+    align-items: center;
+    background: #666 !important;
+}
+
+.image-editor-inner {
+    float: left;
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    background-color: #666;
+    text-align: center;
+    position: relative;
+}
+
+#imageTool-zoom {
+    width: 250px;
+    height: 40px;
+    position: fixed;
+    background-color: rgba(64, 64, 64, 0.5);
+    color:#000000;
+    top: 53px;
+}
+
+.tool {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    padding-top: 0px;
+    border-radius: 5px;
+    background-color:rgba(255,255,255,0.9);
+    color:#000000;
+}
+
+.tool:hover {
+    background-color: rgba(255,255,255,0.9);
+    color:#000000;
+}
+
+.color {
+    color: rgba(255,255,255,0.9);
+    font-size: 20px;
+}
+
+.color:not(nohover):hover {
+    color: #ffff;
+    font-size: 20px;
+}
+
+.font-size-disable {
+    font-size: 20px;
+}
+
+.icon {
+    color: #008AFF;
+}
+.icon-ok {
+    color: #8AFF00;
+}
+.icon-ng {
+    color: #FF008A;
+}
+
+.display-text {
+    font-size: 13px;
+    color: aliceblue
+}
+
+.fontSize {
+    font-size: 15px;
+}
+
+.btnMode {
+    margin-left: 20px; 
+    height: 35px;
+    background-color: #008AFF
+}
+
+.btnZoom {
+    height: 40px;
+    width: 40px;
+    margin-left: 10px; 
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.btnEdit {
+    height: 40px;
+    width: 100px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.left-head {
+    margin-left: 10px;
+    float: left; 
+    line-height: 40px;
+}
+
+.disable {
+    cursor: no-drop;
+    color:  rgba(200,200,200,0.5);
+}
+
+.position {
+    position: absolute;
+}
+.res {
+    display: none;
+}
+.fullsize {
+    display: inline;
+}
+
+@media only screen and (max-width: 1400px) {
+    .res {
+        display: inline;
+    }
+    .fullsize {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1250px) {
+    .res {
+        display: inline;
+    }
+    .fullsize {
+        display: none;
+    }
+    .display-text {
+        display: none;
+    }
+    .btnEdit {
+        height: 40px;
+        width: 30px;
+        margin-left: 20px; 
+        cursor: pointer;
+        background: transparent;
+        border: none;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .res {
+        display: inline;
+    }
+    .fullsize {
+        display: none;
+    }
+    
+    .btnEdit {
+        height: 40px;
+        width: 30px;
+        margin-left: 20px; 
+        cursor: pointer;
+        background: transparent;
+        border: none;
+    }
+    .font-size-disable {
+        font-size: 15px;
+    }
+    .color {
+        color: aliceblue;
+        font-size: 15px;
+    }
+
+    .btnZoom {
+        height: 45px;
+        width: 5vmin;
+        margin-left: 5px; 
+        cursor: pointer;
+        background: transparent;
+        border: none;
+    }
+
+    .display-text {
+        display: none;
+    }
+    .btnMode {
+        margin-left: 20px; 
+        height: 25px;
+        background-color: #008AFF
+    }
+    .fontSize {
+        font-size: 12px;
+    }
+    .left-head {
+        float: left; 
+        line-height: 40px;
+    }
+    .position {
+        position: unset;
+    }
+}
+
+#container-editor {
+    width: 100%;
+    height: 100%;
+    /* -webkit-overflow-scrolling: touch; */
+    overflow: scroll;
+}
+
+
+
+.image-editor-tool {
+    float: left;
+    width: 100%;
+    border-top: 1px solid #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.circle-bt {
+    background-color: #666;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    border-radius: 50%;
+    width: 6vmin;
+    height: 6vmin;
+    margin-right: 10px;
+}
+.circle-bt span {
+    color: #fff;
+    font-size: 16px;
+}
+
+.btn-large {
+    background-color: #666;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    border-radius: 50%;
+    width: 6vmin;
+    height: 6vmin;
+    margin-right: 30px;
+}
+
+.btn-large span {
+    color: #fff;
+    font-size: 35px;
+}
+
+.btn-finish {
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    border-radius: 20%;
+    margin-right: 10px;
+}
+/* .remove {
+    background-image: url('src/assets/img/return.png');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    background-size: 15px;
+    display: inline-block;
+}
+
+.masking {
+    background-image: url('src/assets/img/masking.png');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    background-size: 15px;
+    display: inline-block;
+} */
+
+button:focus, button:active {
+    outline: none;
+    border: transparent;
+}

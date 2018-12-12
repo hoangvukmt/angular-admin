@@ -1,0 +1,57 @@
+.div-cursor {
+    cursor: pointer;
+    min-height: 30px;
+    line-height: 30px;
+}
+.div-cursor .fa-caret-down {
+    float: right;
+    margin-top: 5px;
+}
+.mat-select-custom {
+    height: 30px;
+    display: block;
+    border: 1px #e1e1e1 solid;
+    border-radius: 5px;
+    padding-left: 10px;
+    width: initial;
+}
+input {
+    height: 32px !important;
+}
+input.mat-input-element {
+    font-size: 16px;
+}
+.mat-input-element:disabled {
+    background-color: #fff;
+    color: rgba(0,0,0,.87);
+}
+.col-30 {
+    width: 30%;
+    float: left;
+}
+.col-70 {
+    width: 70%;
+    float: left;
+}
+.div-colum > div:last-child {
+    padding-left: 5%;
+}
+.full-date {
+    width: 100% !important;
+}
+.insurance-custom-date {
+    position: relative;
+    width: 30%;
+}
+.insurance-custom-date mat-datepicker-toggle {
+    position: absolute;
+    right: 0;
+}
+.insurance-custom-date mat-datepicker-toggle > button {
+    display: flex;
+}
+@media only screen and (max-width: 479px){
+    .insurance-custom-date {
+        width: 100%;
+    }
+}

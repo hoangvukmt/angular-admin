@@ -1,0 +1,60 @@
+.div-cursor {
+    cursor: pointer;
+    min-height: 30px;
+    line-height: 30px;
+}
+.div-cursor .fa-caret-down {
+    float: right;
+}
+mat-select {
+    height: 32.39px;
+    display: block;
+}
+mat-select .mat-select-trigger {
+    margin-top: -5px;
+}
+input {
+    height: 32.39px;
+}
+.insurance-custom-date {
+    width: 30%;
+    position: relative;
+}
+input.mat-input-element {
+    font-size: 16px;
+}
+.mat-input-element:disabled {
+    background-color: #fff;
+    color: rgba(0,0,0,.87);
+}
+.col-30 {
+    width: 30%;
+    float: left;
+}
+.col-70 {
+    width: 70%;
+    float: left;
+    padding-left: 5%;
+}
+.full-date {
+    width: 100%;
+}
+.label-text {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+.insurance-custom-date mat-datepicker-toggle {
+    position: absolute;
+    right: 0;
+}
+mat-datepicker-toggle.ocr-date > button {
+    width: 30px;
+    height: 30px;
+}
+@media only screen and (max-width: 479px){
+    .insurance-custom-date {
+        width: 100%;
+    }
+}

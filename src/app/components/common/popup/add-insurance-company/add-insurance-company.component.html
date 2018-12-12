@@ -1,0 +1,78 @@
+<div class="no-padding remodal remodal-is-initialized remodal-is-opened">
+    <div class="popup-title custom-modal-title">保険会社選択</div>
+    <div class="popup-container">
+        <div class="popup-content">
+            <table class="noborder-table input-table">
+                <colgroup>
+                    <col width="30%">
+                    <col width="70%">
+                </colgroup>
+                <tr class="tr-line-bottom">
+                    <td colspan="2">
+                        保険会社を選択<br /><br />
+                        または、入力してください
+                    </td>
+                </tr>
+                <tr class="tr-line-bottom">
+                    <th class="list-title">
+                        保険会社名 (*)
+                    </th>
+                    <td *ngIf="data.type==='auto'" class="company-name pointer" (click)="choseCompany()">
+                        {{data.companyName}}
+                    </td>
+                    <td *ngIf="data.type==='handler'">
+                        <input type="text" 
+                            [formControl]="nameFormControl" 
+                            [ngClass]="{'input-error': nameFormControl.hasError('required') && (nameFormControl.dirty || nameFormControl.touched)}" maxlength="40" />
+                    </td>
+                </tr>
+                <tr class="tr-line-bottom">
+                    <th class="list-title">
+                        担当者
+                    </th>
+                    <td>
+                        <input type="text" [formControl]="tantoNameFormControl" />
+                    </td>
+                </tr>
+                <tr class="tr-line-bottom">
+                    <th class="list-title">
+                        連絡先(電話)
+                    </th>
+                    <td>
+                        <input type="text" 
+                            [formControl]="phoneFormControl" 
+                            onkeyup="forceNumberPhone(event, this, 20)" 
+                            onfocus="addValueToNext(this)" />
+                        <input type="hidden" />
+                    </td>
+                </tr>
+                <tr class="tr-line-bottom">
+                    <th class="list-title" >
+                        ご契約者様ページ
+                    </th>
+                    <td class="hasError">
+                        <input type="text" 
+                            [formControl]="urlFormControl" 
+                            [ngClass]="{'input-error': urlFormControl.hasError('ValidURL') && (urlFormControl.dirty || urlFormControl.touched)}"
+                            maxlength="200" />
+                    </td>
+                </tr>
+                <tr class="tr-line-bottom">
+                    <th class="list-title">
+                        メモ
+                    </th>
+                    <td>
+                        <input type="text" [(ngModel)]="data.memo" value="{{data.memo}}" maxlength="200" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="popup-footer custom-modal-footer">
+            <button class="btn-white" (click)="closePopup()">キャンセル</button>
+            <button type="button" class="normal-bt" 
+                (click)="doSave()"
+                [disabled]="((nameFormControl.hasError('required') || urlFormControl.hasError('ValidURL')) && data.type==='handler') || (data.type==='auto' && companyData.companyName === null || urlFormControl.hasError('ValidURL'))" 
+                [ngClass]="{'input-disable': ((nameFormControl.hasError('required') || urlFormControl.hasError('ValidURL')) && data.type==='handler') || (data.type==='auto' && companyData.companyName === null || urlFormControl.hasError('ValidURL'))}">保存</button>
+        </div>
+    </div>
+</div>

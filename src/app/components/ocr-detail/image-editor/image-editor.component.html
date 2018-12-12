@@ -1,0 +1,99 @@
+<!-- (window:resize)="onResize($event)" -->
+<div (mousedown)="myDown($event)"  (window:resize)="onResize($event)" (mouseup)="myUp($event)" (mousemove)="myMove($event)" class="image-editor-inner" id="image-editor-inner"
+    (mouseup)="disableDrag()" [style.height.px]="heightBody+40">
+    <div class="header-edit">
+        <div style="float: left; position: relative; height: 100%; width: 100%;">
+            <div class="position">
+                <span class="left-head">
+                    <button class="btnZoom" (click)="closeAndBack()"><i class="color fas fa-chevron-left"></i></button>
+                    <button *ngIf="(indexImage+1)===1" title="前のページ" [class.disable]="(indexImage+1)===1" class="btnZoom"
+                        (click)="preImage()"><i class="font-size-disable fas fa-arrow-circle-left" [class.disable]="(indexImage+1)===1"></i></button>
+                    <button *ngIf="(indexImage+1)!==1" title="前のページ" class="btnZoom" (click)="preImage()"><i class="color fas fa-arrow-circle-left"></i></button>
+                    <span style=" margin-left: 10px; ">{{totalImage > 0 ? indexImage+1 : 0}}/{{totalImage}}</span>
+                    <button *ngIf="(indexImage+1)===src.length" title="次のページ" class="btnZoom" [class.disable]="(indexImage+1)===src.length"
+                        (click)="nextImage()"><i class=" font-size-disable fas fa-arrow-circle-right" [class.disable]="(indexImage+1)===src.length"></i></button>
+                    <button *ngIf="(indexImage+1)!==src.length" title="次のページ" class="btnZoom" (click)="nextImage()"><i
+                            class="color fas fa-arrow-circle-right"></i></button>
+                    <button title="拡大" class="btnZoom" (click)="zoomIn()"><i class="color fas fa-search-plus"></i></button>
+                    <span style=" margin-left: 10px;">{{zoomValue}}%</span>
+                    <button title="縮小" class="btnZoom" (click)="zoomOut()"><i class="color fas fa-search-minus"></i></button>
+                    <!-- <button title="拡大率をリセット" class="btnZoom" (click)="resetZoom()"><i class="color fas fa-history"></i></button> -->
+                    <button class="btnZoom" title="左回転"  *ngIf="enableRotate" (click)="rotateLeftImage()"><i class="color fas fa-undo"></i></button>
+                    <button class="btnZoom" title="右回転"  *ngIf="enableRotate" (click)="rotateRightImage()"><i class="color fas fa-redo"></i></button>
+                </span>
+                <!-- <span class="left-head res">
+                    <button *ngIf="editmode" title="編集モード" class="btnZoom" style="margin-left: 10px;" (click)="goEdit()"><i class="color fas fa-edit"></i></button>
+                    <button *ngIf="!editmode" title="キャンセル" class="btnZoom" style="margin-left: 10px;" (click)="reset()"><i class="color fas fa-ban"></i></button>
+                    <button *ngIf="!editmode" title="確定" class="btnZoom" style="margin-left: 10px;" (click)="saveAndClose()"><i class="color fas fa-check-circle"></i></button>
+                </span>
+                <span class="left-head fullsize">
+                    <button *ngIf="editmode" type="button" class="btn btn-primary" style="height: 35px;" (click)="goEdit()"><span
+                            class="fontSize" style="line-height: initial; display: block;"><i class="fas fa-edit"></i>
+                            編集モード</span></button>
+                    <button *ngIf="!editmode" type="button" class="btn btn-danger" style="height: 35px;margin-right: 10px"
+                        (click)="reset()"><span class="fontSize" style="line-height: initial; display: block;"><i class="fas fa-ban"></i>
+                            キャンセル</span></button>
+                    <button *ngIf="!editmode" type="button" class="btn btn-success" style="height: 35px;" (click)="saveAndClose()"><span
+                            class="fontSize" style="line-height: initial; display: block;"><i class="fas fa-check-circle"></i>
+                            確定</span></button>
+                </span> -->
+            </div>
+            <span *ngIf="!editmode" style="line-height: 40px;" class="fullsize">
+                <!-- <button class="btnEdit" *ngIf="enableGoToRotate" (click)="goToRotate()"><i class="icon fas fa-sync-alt"></i>
+                    <span class="display-text"> 回転</span></button>
+                <button class="btnEdit" *ngIf="enableGoToCrop" (click)="goToCrop()"><i class="icon fas fa-crop-alt"></i>
+                    <span class="display-text"> トリミング</span> </button>
+                <button class="btnEdit" *ngIf="enableGoToMasking" (click)="goToMasking()"><i class="icon fas fa-pencil-alt"></i>
+                    <span class="display-text"> マスキング </span></button> -->
+                <!-- <button class="btnEdit" *ngIf="enableRotate" (click)="rotateLeftImage()"><i class="icon fas fa-undo"></i>
+                    <span class="display-text"> 左回転 </span></button>
+                <button class="btnEdit" *ngIf="enableRotate" (click)="rotateRightImage()"><i class="icon fas fa-redo"></i>
+                    <span class="display-text"> 右回転 </span></button> -->
+                <!-- <button class="btnEdit" *ngIf="enableMasking" (click)="drawMasking()"><i class="icon fas fa-plus"></i>
+                    <span class="display-text"> 追加 </span></button>
+                <button class="btnEdit" *ngIf="enableMasking" (click)="removeMasking()"><i class="icon fas fa-reply"></i>
+                    <span class="display-text"> 戻す</span></button>
+                <button class="btnEdit" *ngIf="enableMasking" (click)="acceptMasking()"><i class="icon-ok fas fa-check"></i>
+                    <span class="display-text"> 決定</span></button>
+                <button class="btnEdit" *ngIf="enableCrop" (click)="acceptCrop()"><i class="icon-ok fas fa-check"></i>
+                    <span class="display-text"> 決定</span></button>
+                <button class="btnEdit" *ngIf="enableRotate" (click)="acceptRotate()"><i class="icon-ok fas fa-check"></i>
+                    <span class="display-text"> 決定</span></button>
+                <button class="btnEdit" *ngIf="enableBackToImage" (click)="backToImage()"><i class="icon-ng fas fa-times"></i>
+                    <span class="display-text"> 取消</span></button> -->
+            </span>
+            <span *ngIf="!editmode" style="line-height: 40px;" class="res">
+                <!-- <button class="btnEdit" title="回転"  *ngIf="enableGoToRotate" (click)="goToRotate()"><i class="icon fas fa-sync-alt"></i>
+                    <span class="display-text"> 回転</span></button>
+                <button class="btnEdit" title="トリミング"  *ngIf="enableGoToCrop" (click)="goToCrop()"><i class="icon fas fa-crop-alt"></i>
+                    <span class="display-text"> トリミング</span> </button>
+                <button class="btnEdit" title="マスキング"  *ngIf="enableGoToMasking" (click)="goToMasking()"><i class="icon fas fa-pencil-alt"></i>
+                    <span class="display-text"> マスキング </span></button> -->
+                <!-- <button class="btnEdit" title="左回転"  *ngIf="enableRotate" (click)="rotateLeftImage()"><i class="icon fas fa-undo"></i>
+                    <span class="display-text"> 左回転 </span></button>
+                <button class="btnEdit" title="右回転"  *ngIf="enableRotate" (click)="rotateRightImage()"><i class="icon fas fa-redo"></i>
+                    <span class="display-text"> 右回転 </span></button> -->
+                <!-- <button class="btnEdit" title="追加"  *ngIf="enableMasking" (click)="drawMasking()"><i class="icon fas fa-plus"></i>
+                    <span class="display-text"> 追加 </span></button>
+                <button class="btnEdit" title="戻す"  *ngIf="enableMasking" (click)="removeMasking()"><i class="icon fas fa-reply"></i>
+                    <span class="display-text"> 戻す</span></button>
+                <button class="btnEdit" title="決定"  *ngIf="enableMasking" (click)="acceptMasking()"><i class="icon-ok fas fa-check"></i>
+                    <span class="display-text"> 決定</span></button>
+                <button class="btnEdit" title="決定"  *ngIf="enableCrop" (click)="acceptCrop()"><i class="icon-ok fas fa-check"></i>
+                    <span class="display-text"> 決定</span></button>
+                <button class="btnEdit" title="決定"  *ngIf="enableRotate" (click)="acceptRotate()"><i class="icon-ok fas fa-check"></i>
+                    <span class="display-text"> 決定</span></button>
+                <button class="btnEdit" title="取消"  *ngIf="enableBackToImage" (click)="backToImage()"><i class="icon-ng fas fa-times"></i>
+                    <span class="display-text"> 取消</span></button> -->
+            </span>
+        </div>
+    </div>
+    <div [style.height.px]="heightBody - 15" style="overflow: auto">
+        <div [style.height.px]="divSize" class="div-canvas">
+            <div style="margin: auto">
+                <canvas #canvasEl width=600 height=600 id="vnext-editor" (mousedown)="myDown($event)" (mouseup)="myUp($event)"
+                    (mousemove)="myMove($event)" (touchstart)="myDown($event)" (touchend)="myUp($event)" (touchmove)="myMove($event)"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

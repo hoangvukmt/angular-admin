@@ -1,0 +1,22 @@
+<file-drop (onFileDrop)="dropped($event)">
+    <div [hidden]="!noFile">
+        <img src="{{ROOT_URL}}assets/img/upload-image.png" />
+        <span>ここにファイルをドロップ</span>
+        <span>または</span>
+        <div class="margin-top-15">
+            <label class="btn btn-red" for="choseFile">ファイル選択</label>
+            <input (change)="choseFile()" onchange="previewImage('choseFile')" title="{{ROOT_URL}}" accept="{{data.fileFilter}}" type="file" id="choseFile" class="hidden" />
+        </div>
+    </div>
+    <div [hidden]="noFile">
+        <img id="previewImage" class="pointer" onclick="changeClickToEl('choseFile')" />
+    </div>
+</file-drop>
+<div>
+    <button (click)="doClose()" type="button" class="btn-white btn-pading-30">閉じる</button>
+    <button 
+        (click)="doUpload()" 
+        [disabled]="noFile" 
+        [ngClass]="{'input-disable': noFile}"
+        type="button" class="btn-red float-right">アップロード</button>
+</div>

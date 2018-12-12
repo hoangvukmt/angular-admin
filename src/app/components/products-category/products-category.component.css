@@ -1,0 +1,73 @@
+table.tbl-box td li span {
+    height: 24px;
+    margin: 0;
+    overflow: hidden;
+}
+.scroll-td {
+    max-width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: unset;
+}
+.div-frozen .tbl-frozen td {
+    max-width: 200px;
+}
+.div-frozen .tbl-frozen td.headcol {
+    max-width: unset;
+    min-height: 50px;
+}
+.div-frozen .tbl-frozen .headcol span {
+    width: 20px;
+}
+@media only screen and (max-width: 769px) {
+    table.tbl-box td.title {
+        width: 30%;
+    }
+    .div-frozen {
+        width: 50%;
+        margin-left: 50%;
+    }
+}
+@media only screen and (max-width: 435px) {
+    .div-frozen {
+        width: 50%;
+        margin-left: 50%;
+    }
+    .div-frozen .tbl-frozen .headcol {
+        font-size: 13px;
+        width: 44%;
+    }
+    .div-frozen .tbl-frozen .headcol span {
+        margin-left: 5px;
+    }
+    table.tbl-box td.head, .scroll-td ul li span {
+        font-size: 13px;
+    }
+}
+@media only screen and (min-width: 436px) and (max-width: 530px) {
+    .div-frozen {
+        width: 50%;
+        margin-left: 50%;
+    }
+    .div-frozen .tbl-frozen .headcol {
+        width: 45%;
+    }
+}
+@media only screen and (min-width: 531px) and (max-width: 720px) {
+    .div-frozen {
+        width: 60%;
+        margin-left: 40%;
+    }
+    .div-frozen .tbl-frozen .headcol {
+        width: 37%;
+    }
+}
+@media only screen and (min-width: 721px) and (max-width: 999px) {
+    .div-frozen {
+        width: 70%;
+        margin-left: 30%;
+    }
+    .div-frozen .tbl-frozen .headcol {
+        width: 28.2%;
+    }
+}

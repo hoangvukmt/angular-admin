@@ -1,0 +1,735 @@
+<div class="contents">
+    <section>
+        <app-header></app-header>
+    </section>
+    <section>
+        <app-menu [objMenu]="objMenu"></app-menu>
+    </section>
+    <section>
+        <div class="box">
+            <app-tab-common [objTab]="objTab"></app-tab-common>
+            <div id="tab-1" class="tab-content tab-active">
+                <div class="tab-inner">
+                    <table class="tbl-box">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="90%">
+                        </colgroup>
+                        <tr>
+                            <td class="title">{{'customerName' | translate}}</td>
+                            <td class="content">{{customerInfo.CustommerFullName}}</td>
+                        </tr>
+                    </table>
+                    <div *ngFor="let item of lsFamily">
+                        <h2>{{item.RelationName}}</h2>
+                        <div class="content-inner">
+                            <table class="tbl-box tbl-769">
+                                <colgroup>
+                                    <col width="20%">
+                                    <col width="30%">
+                                    <col width="50%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="6" class="td-avatar">
+                                        <img *ngIf="item.isMale && item.disableSex && !item.isOther" class="avatar" src="{{ROOT_URL}}assets/img/men.png" />
+                                        <img *ngIf="!item.isMale && item.disableSex && !item.isOther" class="avatar" src="{{ROOT_URL}}assets/img/woman.png" />
+                                        <img *ngIf="!item.disableSex && !item.isOther" class="avatar" src="{{ROOT_URL}}assets/img/child.png" />
+                                        <img *ngIf="item.isOther" src="{{ROOT_URL}}assets/img/family.png" />
+                                    </td>
+                                    <td class="title">{{'tableInfo.name' | translate}}</td>
+                                    <td class="">{{item.LastName}} {{item.FirstName}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'tableInfo.relation' | translate}}</td>
+                                    <td class="">{{item.RelationName}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'tableInfo.sex' | translate}}</td>
+                                    <td class="">{{item.SexName}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'tableInfo.birthday' | translate}}</td>
+                                    <td class="">{{item.Birthday | date:'yyyy年MM月dd日'}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'tableInfo.age' | translate}}</td>
+                                    <td class="">{{calculatorAges(item.Birthday)}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'tableInfo.createDate' | translate}}</td>
+                                    <td class="">{{item.CreateDate | date:'yyyy年MM月dd日'}}</td>
+                                </tr>
+                            </table>
+
+                            <table class="tbl-box tbl-90">
+                                <colgroup>
+                                    <col width="6%">
+                                    <col width="24%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="15%">
+                                    <col width="10%">
+                                    <col width="20%">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="2" class="td-avatar">
+                                            <img *ngIf="item.isMale && item.disableSex && !item.isOther" class="avatar" src="{{ROOT_URL}}assets/img/men.png" />
+                                            <img *ngIf="!item.isMale && item.disableSex && !item.isOther" class="avatar" src="{{ROOT_URL}}assets/img/woman.png" />
+                                            <img *ngIf="!item.disableSex && !item.isOther" class="avatar" src="{{ROOT_URL}}assets/img/child.png" />
+                                            <img *ngIf="item.isOther" src="{{ROOT_URL}}assets/img/family.png" />
+                                        </td>
+                                        <td class="head">{{'tableInfo.name' | translate}}</td>
+                                        <td class="head">{{'tableInfo.relation' | translate}}</td>
+                                        <td class="head">{{'tableInfo.sex' | translate}}</td>
+                                        <td class="head">{{'tableInfo.birthday' | translate}}</td>
+                                        <td class="head">{{'tableInfo.age' | translate}}</td>
+                                        <td class="head">{{'tableInfo.createDate' | translate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="center">{{item.LastName}} {{item.FirstName}}</td>
+                                        <td class="center">{{item.RelationName}}</td>
+                                        <td class="center">{{item.SexName}}</td>
+                                        <td class="center">{{item.Birthday | date:'yyyy年MM月dd日'}}</td>
+                                        <td class="center">{{calculatorAges(item.Birthday)}}</td>
+                                        <td class="center">{{item.CreateDate | date:'yyyy年MM月dd日'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="bg-red">
+                            <h2>{{'keiyakuTitle' | translate}}</h2>
+                        </div>
+                        <div class="content-inner">
+                            <table class="tbl-box tbl-769 tbl-kei" *ngFor="let kei of item.LifeData">
+                                <colgroup> 
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="4" class="center td-checkbox">
+                                        <label class="check-box">
+                                            <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.contracDate' | translate}}</td>
+                                    <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                    <td class="title">{{'keiyakuTable.hkikan' | translate}}</td>
+                                    <td>{{kei.HKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.companyName' | translate}}</td>
+                                    <td>
+                                        <span class="life-icon">&nbsp;</span>
+                                        <span>{{kei.CompanyName}}</span>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.pkikan' | translate}}</td>
+                                    <td>{{kei.PKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.productName' | translate}}</td>
+                                    <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                    <td class="title">{{'keiyakuTable.haraikata' | translate}}</td>
+                                    <td>{{kei.Haraikata}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.money' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 1)}}</td>
+                                    <td class="title">{{'keiyakuTable.hokenP' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 2)}}</td>
+                                </tr>
+                            </table>
+                            <table class="tbl-box tbl-769 tbl-kei" *ngFor="let kei of item.MedicalData">
+                                <colgroup> 
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="4" class="center td-checkbox">
+                                        <label class="check-box">
+                                            <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.contracDate' | translate}}</td>
+                                    <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                    <td class="title">{{'keiyakuTable.hkikan' | translate}}</td>
+                                    <td>{{kei.HKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.companyName' | translate}}</td>
+                                    <td>
+                                        <span class="medical-icon">&nbsp;</span>
+                                        <span>{{kei.CompanyName}}</span>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.pkikan' | translate}}</td>
+                                    <td>{{kei.PKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.productName' | translate}}</td>
+                                    <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                    <td class="title">{{'keiyakuTable.haraikata' | translate}}</td>
+                                    <td>{{kei.Haraikata}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.money' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 1)}}</td>
+                                    <td class="title">{{'keiyakuTable.hokenP' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 2)}}</td>
+                                </tr>
+                            </table>
+                            <table class="tbl-box tbl-769 tbl-kei" *ngFor="let kei of item.SavingsData">
+                                <colgroup> 
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="4" class="center td-checkbox">
+                                        <label class="check-box">
+                                            <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.contracDate' | translate}}</td>
+                                    <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                    <td class="title">{{'keiyakuTable.hkikan' | translate}}</td>
+                                    <td>{{kei.HKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.companyName' | translate}}</td>
+                                    <td>
+                                        <span class="savings-icon">&nbsp;</span>
+                                        <span>{{kei.CompanyName}}</span>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.pkikan' | translate}}</td>
+                                    <td>{{kei.PKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.productName' | translate}}</td>
+                                    <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                    <td class="title">{{'keiyakuTable.haraikata' | translate}}</td>
+                                    <td>{{kei.Haraikata}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.money' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 1)}}</td>
+                                    <td class="title">{{'keiyakuTable.hokenP' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 2)}}</td>
+                                </tr>
+                            </table>
+                            <table class="tbl-box tbl-769 tbl-kei" *ngFor="let kei of item.CarData">
+                                <colgroup> 
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="4" class="center td-checkbox">
+                                        <label class="check-box">
+                                            <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.contracDate' | translate}}</td>
+                                    <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                    <td class="title">{{'keiyakuTable.hkikan' | translate}}</td>
+                                    <td>{{kei.HKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.companyName' | translate}}</td>
+                                    <td>
+                                        <span class="car-icon">&nbsp;</span>
+                                        <span>{{kei.CompanyName}}</span>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.pkikan' | translate}}</td>
+                                    <td>{{kei.PKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.productName' | translate}}</td>
+                                    <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                    <td class="title">{{'keiyakuTable.haraikata' | translate}}</td>
+                                    <td>{{kei.Haraikata}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.money' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 1)}}</td>
+                                    <td class="title">{{'keiyakuTable.hokenP' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 2)}}</td>
+                                </tr>
+                            </table>
+                            <table class="tbl-box tbl-769 tbl-kei" *ngFor="let kei of item.HouseData">
+                                <colgroup> 
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="4" class="center td-checkbox">
+                                        <label class="check-box">
+                                            <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.contracDate' | translate}}</td>
+                                    <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                    <td class="title">{{'keiyakuTable.hkikan' | translate}}</td>
+                                    <td>{{kei.HKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.companyName' | translate}}</td>
+                                    <td>
+                                        <span class="house-icon">&nbsp;</span>
+                                        <span>{{kei.CompanyName}}</span>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.pkikan' | translate}}</td>
+                                    <td>{{kei.PKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.productName' | translate}}</td>
+                                    <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                    <td class="title">{{'keiyakuTable.haraikata' | translate}}</td>
+                                    <td>{{kei.Haraikata}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.money' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 1)}}</td>
+                                    <td class="title">{{'keiyakuTable.hokenP' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 2)}}</td>
+                                </tr>
+                            </table>
+                            <table class="tbl-box tbl-769 tbl-kei" *ngFor="let kei of item.SunData">
+                                <colgroup> 
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="4" class="center td-checkbox">
+                                        <label class="check-box">
+                                            <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.contracDate' | translate}}</td>
+                                    <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                    <td class="title">{{'keiyakuTable.hkikan' | translate}}</td>
+                                    <td>{{kei.HKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.companyName' | translate}}</td>
+                                    <td>
+                                        <span class="other-icon">&nbsp;</span>
+                                        <span>{{kei.CompanyName}}</span>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.pkikan' | translate}}</td>
+                                    <td>{{kei.PKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.productName' | translate}}</td>
+                                    <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                    <td class="title">{{'keiyakuTable.haraikata' | translate}}</td>
+                                    <td>{{kei.Haraikata}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.money' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 1)}}</td>
+                                    <td class="title">{{'keiyakuTable.hokenP' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 2)}}</td>
+                                </tr>
+                            </table>
+                            <!--
+                            <table class="tbl-box tbl-769 tbl-kei" *ngFor="let kei of item.AirplaneData">
+                                <colgroup> 
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="4" class="center td-checkbox">
+                                        <label class="check-box">
+                                            <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.contracDate' | translate}}</td>
+                                    <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                    <td class="title">{{'keiyakuTable.hkikan' | translate}}</td>
+                                    <td>{{kei.HKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.companyName' | translate}}</td>
+                                    <td>
+                                        <span class="airplane-icon">&nbsp;</span>
+                                        <span>{{kei.CompanyName}}</span>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.pkikan' | translate}}</td>
+                                    <td>{{kei.PKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.productName' | translate}}</td>
+                                    <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                    <td class="title">{{'keiyakuTable.haraikata' | translate}}</td>
+                                    <td>{{kei.Haraikata}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.money' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 1)}}</td>
+                                    <td class="title">{{'keiyakuTable.hokenP' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 2)}}</td>
+                                </tr>
+                            </table>
+                            <table class="tbl-box tbl-769 tbl-kei" *ngFor="let kei of item.OtherData">
+                                <colgroup> 
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="4" class="center td-checkbox">
+                                        <label class="check-box">
+                                            <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.contracDate' | translate}}</td>
+                                    <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                    <td class="title">{{'keiyakuTable.hkikan' | translate}}</td>
+                                    <td>{{kei.HKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.companyName' | translate}}</td>
+                                    <td>
+                                        <span class="other-icon">&nbsp;</span>
+                                        <span>{{kei.CompanyName}}</span>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.pkikan' | translate}}</td>
+                                    <td>{{kei.PKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.productName' | translate}}</td>
+                                    <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                    <td class="title">{{'keiyakuTable.haraikata' | translate}}</td>
+                                    <td>{{kei.Haraikata}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.money' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 1)}}</td>
+                                    <td class="title">{{'keiyakuTable.hokenP' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 2)}}</td>
+                                </tr>
+                            </table>
+                            -->
+                            <table class="tbl-box tbl-769 tbl-kei" *ngFor="let kei of item.AutoData">
+                                <colgroup> 
+                                    <col width="10%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                    <col width="20%">
+                                    <col width="25%">
+                                </colgroup>
+                                <tr>
+                                    <td rowspan="4" class="center td-checkbox">
+                                        <label class="check-box">
+                                            <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.contracDate' | translate}}</td>
+                                    <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                    <td class="title">{{'keiyakuTable.hkikan' | translate}}</td>
+                                    <td>{{kei.HKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.companyName' | translate}}</td>
+                                    <td>
+                                        <span *ngIf="kei.HoshoCategoryF === 1" class="life-icon">&nbsp;</span>
+                                        <span *ngIf="kei.HoshoCategoryF === 2" class="medical-icon">&nbsp;</span>
+                                        <span *ngIf="kei.HoshoCategoryF === 3" class="savings-icon">&nbsp;</span>
+                                        <span *ngIf="kei.HoshoCategoryF === 4" class="car-icon">&nbsp;</span>
+                                        <span *ngIf="kei.HoshoCategoryF === 5" class="house-icon">&nbsp;</span>
+                                        <span *ngIf="kei.HoshoCategoryF === 6" class="other-icon">&nbsp;</span>
+                                        <!--
+                                        <span *ngIf="kei.HoshoCategoryF === 7" class="airplane-icon">&nbsp;</span>
+                                        <span *ngIf="kei.HoshoCategoryF === 8" class="other-icon">&nbsp;</span>
+                                        -->
+                                        <span>{{kei.CompanyName}}</span>
+                                    </td>
+                                    <td class="title">{{'keiyakuTable.pkikan' | translate}}</td>
+                                    <td>{{kei.PKikan}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.productName' | translate}}</td>
+                                    <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                    <td class="title">{{'keiyakuTable.haraikata' | translate}}</td>
+                                    <td>{{kei.Haraikata}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">{{'keiyakuTable.money' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 1)}}</td>
+                                    <td class="title">{{'keiyakuTable.hokenP' | translate}}</td>
+                                    <td>{{convertToMoney(kei, 2)}}</td>
+                                </tr>
+                            </table>
+
+                            <table class="tbl-box tbl-full">
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="15%">
+                                    <col width="20%">
+                                    <col width="15%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="5%">
+                                    <col width="10%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>{{'keiyakuTable.checkbox' | translate}}</th>
+                                        <th>{{'keiyakuTable.contracDate' | translate}}</th>
+                                        <th>{{'keiyakuTable.companyName' | translate}}</th>
+                                        <th>{{'keiyakuTable.productName' | translate}}</th>
+                                        <th>{{'keiyakuTable.money' | translate}}</th>
+                                        <th>{{'keiyakuTable.hkikan' | translate}}</th>
+                                        <th>{{'keiyakuTable.pkikan' | translate}}</th>
+                                        <th>{{'keiyakuTable.haraikata' | translate}}</th>
+                                        <th>{{'keiyakuTable.hokenP' | translate}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let kei of item.LifeData">
+                                        <td class="center">
+                                            <label class="check-box">
+                                                <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                        <td>
+                                            <span class="life-icon">&nbsp;</span>
+                                            <span>{{kei.CompanyName}}</span>
+                                        </td>
+                                        <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                        <td class="right">{{convertToMoney(kei, 1)}}</td>
+                                        <td class="center">{{kei.HKikan}}</td>
+                                        <td class="center">{{kei.PKikan}}</td>
+                                        <td class="center">{{kei.Haraikata}}</td>
+                                        <td class="right">{{convertToMoney(kei, 2)}}</td>
+                                    </tr>
+                                    <tr *ngFor="let kei of item.MedicalData">
+                                        <td class="center">
+                                            <label class="check-box">
+                                                <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                        <td>
+                                            <span class="medical-icon">&nbsp;</span>
+                                            <span>{{kei.CompanyName}}</span>
+                                        </td>
+                                        <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                        <td class="right">{{convertToMoney(kei, 1)}}</td>
+                                        <td class="center">{{kei.HKikan}}</td>
+                                        <td class="center">{{kei.PKikan}}</td>
+                                        <td class="center">{{kei.Haraikata}}</td>
+                                        <td class="right">{{convertToMoney(kei, 2)}}</td>
+                                    </tr>
+                                    <tr *ngFor="let kei of item.SavingsData">
+                                        <td class="center">
+                                            <label class="check-box">
+                                                <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                        <td>
+                                            <span class="savings-icon">&nbsp;</span>
+                                            <span>{{kei.CompanyName}}</span>
+                                        </td>
+                                        <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                        <td class="right">{{convertToMoney(kei, 1)}}</td>
+                                        <td class="center">{{kei.HKikan}}</td>
+                                        <td class="center">{{kei.PKikan}}</td>
+                                        <td class="center">{{kei.Haraikata}}</td>
+                                        <td class="right">{{convertToMoney(kei, 2)}}</td>
+                                    </tr>
+                                    <tr *ngFor="let kei of item.CarData">
+                                        <td class="center">
+                                            <label class="check-box">
+                                                <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                        <td>
+                                            <span class="car-icon">&nbsp;</span>
+                                            <span>{{kei.CompanyName}}</span>
+                                        </td>
+                                        <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                        <td class="right">{{convertToMoney(kei, 1)}}</td>
+                                        <td class="center">{{kei.HKikan}}</td>
+                                        <td class="center">{{kei.PKikan}}</td>
+                                        <td class="center">{{kei.Haraikata}}</td>
+                                        <td class="right">{{convertToMoney(kei, 2)}}</td>
+                                    </tr>
+                                    <tr *ngFor="let kei of item.HouseData">
+                                        <td class="center">
+                                            <label class="check-box">
+                                                <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                        <td>
+                                            <span class="house-icon">&nbsp;</span>
+                                            <span>{{kei.CompanyName}}</span>
+                                        </td>
+                                        <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                        <td class="right">{{convertToMoney(kei, 1)}}</td>
+                                        <td class="center">{{kei.HKikan}}</td>
+                                        <td class="center">{{kei.PKikan}}</td>
+                                        <td class="center">{{kei.Haraikata}}</td>
+                                        <td class="right">{{convertToMoney(kei, 2)}}</td>
+                                    </tr>
+                                    <tr *ngFor="let kei of item.SunData">
+                                        <td class="center">
+                                            <label class="check-box">
+                                                <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                        <td>
+                                            <span class="other-icon">&nbsp;</span>
+                                            <span>{{kei.CompanyName}}</span>
+                                        </td>
+                                        <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                        <td class="right">{{convertToMoney(kei, 1)}}</td>
+                                        <td class="center">{{kei.HKikan}}</td>
+                                        <td class="center">{{kei.PKikan}}</td>
+                                        <td class="center">{{kei.Haraikata}}</td>
+                                        <td class="right">{{convertToMoney(kei, 2)}}</td>
+                                    </tr>
+                                    <!--
+                                    <tr *ngFor="let kei of item.AirplaneData">
+                                        <td class="center">
+                                            <label class="check-box">
+                                                <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                        <td>
+                                            <span class="airplane-icon">&nbsp;</span>
+                                            <span>{{kei.CompanyName}}</span>
+                                        </td>
+                                        <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                        <td class="right">{{convertToMoney(kei, 1)}}</td>
+                                        <td class="center">{{kei.HKikan}}</td>
+                                        <td class="center">{{kei.PKikan}}</td>
+                                        <td class="center">{{kei.Haraikata}}</td>
+                                        <td class="right">{{convertToMoney(kei, 2)}}</td>
+                                    </tr>
+                                    <tr *ngFor="let kei of item.OtherData">
+                                        <td class="center">
+                                            <label class="check-box">
+                                                <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                        <td>
+                                            <span class="other-icon">&nbsp;</span>
+                                            <span>{{kei.CompanyName}}</span>
+                                        </td>
+                                        <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                        <td class="right">{{convertToMoney(kei, 1)}}</td>
+                                        <td class="center">{{kei.HKikan}}</td>
+                                        <td class="center">{{kei.PKikan}}</td>
+                                        <td class="center">{{kei.Haraikata}}</td>
+                                        <td class="right">{{convertToMoney(kei, 2)}}</td>
+                                    </tr>
+                                    -->
+                                    <tr *ngFor="let kei of item.AutoData">
+                                        <td class="center">
+                                            <label class="check-box">
+                                                <input [(ngModel)]="kei.isCheck" (ngModelChange)="chageCheck(kei)" type="checkbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </td>
+                                        <td>{{kei.ContractDate | date:'yyyy年MM月dd日'}}</td>
+                                        <td>
+                                            <span *ngIf="kei.HoshoCategoryF === 1" class="life-icon">&nbsp;</span>
+                                            <span *ngIf="kei.HoshoCategoryF === 2" class="medical-icon">&nbsp;</span>
+                                            <span *ngIf="kei.HoshoCategoryF === 3" class="savings-icon">&nbsp;</span>
+                                            <span *ngIf="kei.HoshoCategoryF === 4" class="car-icon">&nbsp;</span>
+                                            <span *ngIf="kei.HoshoCategoryF === 5" class="house-icon">&nbsp;</span>
+                                            <span *ngIf="kei.HoshoCategoryF === 6" class="other-icon">&nbsp;</span>
+                                            <!--
+                                            <span *ngIf="kei.HoshoCategoryF === 7" class="airplane-icon">&nbsp;</span>
+                                            <span *ngIf="kei.HoshoCategoryF === 8" class="other-icon">&nbsp;</span>
+                                            -->
+                                            <span>{{kei.CompanyName}}</span>
+                                        </td>
+                                        <td (click)="goProductDetail(kei.KeiyakuNo)" class="pointer"><span class="link-label">{{kei.ProductName}}</span></td>
+                                        <td class="right">{{convertToMoney(kei, 1)}}</td>
+                                        <td class="center">{{kei.HKikan}}</td>
+                                        <td class="center">{{kei.PKikan}}</td>
+                                        <td class="center">{{kei.Haraikata}}</td>
+                                        <td class="right">{{convertToMoney(kei, 2)}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h2>{{'memo' | translate}}</h2>
+                    <div class="content-inner">
+                        <textarea 
+                            [formControl]="memoFormControl" 
+                            id="memoInfo" rows="5" maxlength="1000"></textarea>
+                    </div>
+                    <div class="right">
+                        <button
+                            [disabled]="memoFormControl.hasError('required') || memoData === memoFormControl.value" 
+                            [ngClass]="{'input-disable': memoFormControl.hasError('required') || memoData === memoFormControl.value}"
+                            (click)="doSaveMemo()" 
+                            type="button" class="btn-red">{{'btnSaveMemo' | translate}}</button>
+                    </div>
+                </div>
+                <div>
+                    <button (click)="doRemove()" type="button" class="btn-red">{{'btnRemove' | translate}}</button>
+                    <button 
+                        [disabled]="mapCheck.size === 0" 
+                        [ngClass]="{'input-disable': mapCheck.size === 0}"
+                        (click)="doSendSystem()" 
+                        type="button" class="btn-orange float-right">
+                        <span *ngIf="iqSystem">{{'btnIqSystem' | translate}}</span>
+                        <span *ngIf="asSystem">{{'btnAsSystem' | translate}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,11 @@
+{
+    "userNamePlaceholder": "ログインID",
+    "passwodPlaceholder": "パスワード",
+    "buttonLogin": "ログイン",
+    "err_msg": {
+        "userNameRequired": "ログインIDが入力されていません",
+        "passwordRequired": "パスワードが入力されていません",
+        "loginInfoIncorect": "ログインID またはパスワードが間違っています。",
+        "loginOutofDate": "パスワードの有効期限が切れています。IQシステムでパスワードの再設定をお願いします"
+    }
+}

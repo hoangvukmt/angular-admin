@@ -1,0 +1,24 @@
+@media only screen and (max-width: 642px) {
+    .menu-1 > button {
+        width: 50%;
+        padding: 5px 20px;
+        margin: 0;
+        border: 1px solid #fff;
+        border-radius: 0;
+    }
+}
+@media only screen and (min-width: 643px) and (max-width: 702px) {
+    .menu-1 > button {
+        padding: 5px 5px;
+    }
+}
+@media only screen and (min-width: 703px) and (max-width: 822px) {
+    .menu-1 > button {
+        padding: 5px 10px;
+    }
+}
+@media only screen and (min-width: 823px) and (max-width: 1062px) {
+    .menu-1 > button {
+        padding: 5px 20px;
+    }
+}

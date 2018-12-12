@@ -1,0 +1,190 @@
+<div class="contents">
+    <section>
+        <app-header></app-header>
+    </section>
+    <section>
+        <app-menu [objMenu]="objMenu"></app-menu>
+    </section>
+    <section>
+        <div class="box">
+            <app-tab-common [tabClass]="'menu-1'" [objTab]="objTab"></app-tab-common>
+            <div id="tab-2" class="tab-content tab-active">
+                <div class="tab-inner">
+                    <table class="tbl-box">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="90%">
+                        </colgroup>
+                        <tr>
+                            <td class="title">{{'customerName' | translate}}</td>
+                            <td class="content">{{customerInfo.CustommerFullName}}</td>
+                        </tr>
+                    </table>
+                    <div class="div-frozen">
+                        <table class="tbl-box margin-top-15 tbl-frozen">
+                            <tr>
+                                <td class="no-border headcol"></td>
+                                <td *ngFor="let item of lsFamily" class="head">{{item.FirstName}} {{item.RelationName}}</td>
+                            </tr>
+                            <tr class="itemBlance">
+                                <td class="head left headcol itemBlance">
+                                    <span class="life-icon">&nbsp;</span>
+                                    {{'lifeCategory' | translate}}
+                                </td>
+                                <td *ngFor="let item of lsFamily" [ngClass]="{'center': strToArr(item.LifeData).length === 0}">
+                                    <div class="scroll-td">
+                                        <i *ngIf="strToArr(item.LifeData).length === 0" class="fas fa-minus"></i>
+                                        <ul *ngIf="strToArr(item.LifeData).length > 0">
+                                            <li *ngFor="let kei of strToArr(item.LifeData)" (click)="goProductDetail(kei.KeiyakuNo)">
+                                                <span class="link-label" title="{{kei.CompanyName}}">{{kei.CompanyName}}</span>
+                                                <span class="link-label" title="{{kei.ProductName}}">{{kei.ProductName}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="itemBlance">
+                                <td class="head left headcol itemBlance">
+                                    <span class="medical-icon">&nbsp;</span>
+                                    {{'medicalCategory' | translate}}
+                                </td>
+                                <td *ngFor="let item of lsFamily" [ngClass]="{'center': strToArr(item.MedicalData).length === 0}">
+                                    <div class="scroll-td">
+                                        <i *ngIf="strToArr(item.MedicalData).length === 0" class="fas fa-minus"></i>
+                                        <ul *ngIf="strToArr(item.MedicalData).length > 0">
+                                            <li *ngFor="let kei of strToArr(item.MedicalData)" (click)="goProductDetail(kei.KeiyakuNo)">
+                                                <span class="link-label" title="{{kei.CompanyName}}">{{kei.CompanyName}}</span>
+                                                <span class="link-label" title="{{kei.ProductName}}">{{kei.ProductName}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="itemBlance">
+                                <td class="head left headcol itemBlance">
+                                    <span class="savings-icon">&nbsp;</span>
+                                    {{'savingsCategory' | translate}}
+                                </td>
+                                <td *ngFor="let item of lsFamily" [ngClass]="{'center': strToArr(item.SavingsData).length === 0}">
+                                    <div class="scroll-td">
+                                        <i *ngIf="strToArr(item.SavingsData).length === 0" class="fas fa-minus"></i>
+                                        <ul *ngIf="strToArr(item.SavingsData).length > 0">
+                                            <li *ngFor="let kei of strToArr(item.SavingsData)" (click)="goProductDetail(kei.KeiyakuNo)">
+                                                <span class="link-label" title="{{kei.CompanyName}}">{{kei.CompanyName}}</span>
+                                                <span class="link-label" title="{{kei.ProductName}}">{{kei.ProductName}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="itemBlance">
+                                <td class="head left headcol itemBlance">
+                                    <span class="car-icon">&nbsp;</span>
+                                    {{'carCategory' | translate}}
+                                </td>
+                                <td *ngFor="let item of lsFamily" [ngClass]="{'center': strToArr(item.CarData).length === 0}">
+                                    <div class="scroll-td">
+                                        <i *ngIf="strToArr(item.CarData).length === 0" class="fas fa-minus"></i>
+                                        <ul *ngIf="strToArr(item.CarData).length > 0">
+                                            <li *ngFor="let kei of strToArr(item.CarData)" (click)="goProductDetail(kei.KeiyakuNo)">
+                                                <span class="link-label" title="{{kei.CompanyName}}">{{kei.CompanyName}}</span>
+                                                <span class="link-label" title="{{kei.ProductName}}">{{kei.ProductName}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="itemBlance">
+                                <td class="head left headcol itemBlance">
+                                    <span class="house-icon">&nbsp;</span>
+                                    {{'houseCategory' | translate}}
+                                </td>
+                                <td *ngFor="let item of lsFamily" [ngClass]="{'center': strToArr(item.HouseData).length === 0}">
+                                    <div class="scroll-td">
+                                        <i *ngIf="strToArr(item.HouseData).length === 0" class="fas fa-minus"></i>
+                                        <ul *ngIf="strToArr(item.HouseData).length > 0">
+                                            <li *ngFor="let kei of strToArr(item.HouseData)" (click)="goProductDetail(kei.KeiyakuNo)">
+                                                <span class="link-label" title="{{kei.CompanyName}}">{{kei.CompanyName}}</span>
+                                                <span class="link-label" title="{{kei.ProductName}}">{{kei.ProductName}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="itemBlance">
+                                <td class="head left headcol itemBlance">
+                                    <span class="other-icon">&nbsp;</span>
+                                    {{'sunCategory' | translate}}
+                                </td>
+                                <td *ngFor="let item of lsFamily" [ngClass]="{'center': strToArr(item.SunData).length === 0}">
+                                    <div class="scroll-td">
+                                        <i *ngIf="strToArr(item.SunData).length === 0" class="fas fa-minus"></i>
+                                        <ul *ngIf="strToArr(item.SunData).length > 0">
+                                            <li *ngFor="let kei of strToArr(item.SunData)" (click)="goProductDetail(kei.KeiyakuNo)">
+                                                <span class="link-label" title="{{kei.CompanyName}}">{{kei.CompanyName}}</span>
+                                                <span class="link-label" title="{{kei.ProductName}}">{{kei.ProductName}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--
+                            <tr class="itemBlance">
+                                <td class="head left headcol itemBlance">
+                                    <span class="airplane-icon">&nbsp;</span>
+                                    {{'airplaneCategory' | translate}}
+                                </td>
+                                <td *ngFor="let item of lsFamily" [ngClass]="{'center': strToArr(item.AirplaneData).length === 0}">
+                                    <div class="scroll-td">
+                                        <i *ngIf="strToArr(item.AirplaneData).length === 0" class="fas fa-minus"></i>
+                                        <ul *ngIf="strToArr(item.AirplaneData).length > 0">
+                                            <li *ngFor="let kei of strToArr(item.AirplaneData)" (click)="goProductDetail(kei.KeiyakuNo)">
+                                                <span class="link-label" title="{{kei.CompanyName}}">{{kei.CompanyName}}</span>
+                                                <span class="link-label" title="{{kei.ProductName}}">{{kei.ProductName}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="itemBlance">
+                                <td class="head left headcol itemBlance">
+                                    <span class="other-icon">&nbsp;</span>
+                                    {{'otherCategory' | translate}}
+                                </td>
+                                <td *ngFor="let item of lsFamily" [ngClass]="{'center': strToArr(item.OtherData).length === 0}">
+                                    <div class="scroll-td">
+                                        <i *ngIf="strToArr(item.OtherData).length === 0" class="fas fa-minus"></i>
+                                        <ul *ngIf="strToArr(item.OtherData).length > 0">
+                                            <li *ngFor="let kei of strToArr(item.OtherData)" (click)="goProductDetail(kei.KeiyakuNo)">
+                                                <span class="link-label" title="{{kei.CompanyName}}">{{kei.CompanyName}}</span>
+                                                <span class="link-label" title="{{kei.ProductName}}">{{kei.ProductName}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            -->
+                            <tr class="itemBlance">
+                                <td class="head left headcol itemBlance">
+                                    <span>&nbsp;</span>
+                                    {{'autoCategory' | translate}}
+                                </td>
+                                <td *ngFor="let item of lsFamily" [ngClass]="{'center': strToArr(item.AutoData).length === 0}">
+                                    <div class="scroll-td">
+                                        <i *ngIf="strToArr(item.AutoData).length === 0" class="fas fa-minus"></i>
+                                        <ul *ngIf="strToArr(item.AutoData).length > 0">
+                                            <li *ngFor="let kei of strToArr(item.AutoData)" (click)="goProductDetail(kei.KeiyakuNo)">
+                                                <span class="link-label" title="{{kei.CompanyName}}">{{kei.CompanyName}}</span>
+                                                <span class="link-label" title="{{kei.ProductName}}">{{kei.ProductName}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

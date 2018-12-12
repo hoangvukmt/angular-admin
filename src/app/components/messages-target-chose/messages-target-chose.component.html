@@ -1,0 +1,218 @@
+<div class="contents">
+    <section>
+        <app-header></app-header>
+    </section>
+    <section>
+        <app-menu [objMenu]="objMenu"></app-menu>
+    </section>
+    <section>
+        <div class="box">
+            <app-tab-common [tabClass]="'target-chose'" [objTab]="objTab"></app-tab-common>
+            <div id="tab-1" class="tab-content tab-active">
+                <div class="tab-inner">
+                    <div class="float-right">{{'target.title' | translate}} : {{targetCount}}{{'person' | translate}}</div>
+                    <div class="form-row">
+                        <label>{{'target.title' | translate}} <span class="text-red">*</span></label>
+                        <div>
+                            <div>
+                                <div class="group-radio-box">
+                                    <label class="radio-box">
+                                        {{'target.all' | translate}} <input [(ngModel)]="targetF" (ngModelChange)="targetChoose()" type="radio" name="radioTargetF" value="0" /> <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="group-radio-box">
+                                    <label class="radio-box">
+                                        {{'target.person' | translate}} <input [(ngModel)]="targetF" (ngModelChange)="targetChoose()" type="radio" name="radioTargetF" value="1" /> <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="group-check-box">
+                                        <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                            {{'target.men' | translate}} <input [(ngModel)]="targetMen" [disabled]="targetF === '0'"  type="checkbox" /> <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="group-check-box">
+                                        <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                            {{'target.women' | translate}} <input [(ngModel)]="targetWomen" [disabled]="targetF === '0'" type="checkbox" /> <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="group-check-box">
+                                        <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                            {{'target.married' | translate}} <input [(ngModel)]="targetMarriage" [disabled]="targetF === '0'" type="checkbox" /> <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="group-check-box">
+                                        <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                            {{'target.single' | translate}} <input [(ngModel)]="targetSingle" [disabled]="targetF === '0'" type="checkbox"> <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="group-check-box">
+                                        <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                            {{'target.hasChild' | translate}} <input [(ngModel)]="targetHasChild" [disabled]="targetF === '0'" type="checkbox"> <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="group-check-box">
+                                        <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                            {{'target.noChild' | translate}} <input [(ngModel)]="targetNoChild" [disabled]="targetF === '0'" type="checkbox"> <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="group-check-box">
+                                        <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                            {{'target.20' | translate}} <input [(ngModel)]="targetAge20" [disabled]="targetF === '0'" type="checkbox" /> <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                        {{'target.30' | translate}} <input [(ngModel)]="targetAge30" [disabled]="targetF === '0'" type="checkbox" /> <span class="checkmark"></span>
+                                    </label>
+                                    <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                        {{'target.40' | translate}} <input [(ngModel)]="targetAge40" [disabled]="targetF === '0'" type="checkbox" /> <span class="checkmark"></span>
+                                    </label>
+                                    <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                        {{'target.50' | translate}} <input [(ngModel)]="targetAge50" [disabled]="targetF === '0'" type="checkbox" /> <span class="checkmark"></span>
+                                    </label>
+                                    <label class="check-box" [ngClass]="{'input-disable': targetF === '0'}">
+                                        {{'target.60' | translate}} <input [(ngModel)]="targetAge60" [disabled]="targetF === '0'" type="checkbox" /> <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label>{{'status.title' | translate}} <span class="text-red">*</span></label>
+                        <div>
+                            <div>
+                                <div class="group-radio-box">
+                                    <label class="radio-box">
+                                        {{'status.notDefinition' | translate}} <input [(ngModel)]="kanyuShiteiF" (ngModelChange)="kanyuShiteiChoose()" type="radio" name="radioKanyuShiteiF" value="0" /> <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="group-radio-box">
+                                    <label class="radio-box">
+                                        {{'status.definition' | translate}} <input [(ngModel)]="kanyuShiteiF" (ngModelChange)="kanyuShiteiChoose()" type="radio" name="radioKanyuShiteiF" value="1" /> <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <select 
+                                    [(ngModel)]="dataModel.KanyuHoshoCategoryF" 
+                                    [ngClass]="{'input-disable': kanyuShiteiF === '0'}" 
+                                    [disabled]="kanyuShiteiF === '0'"
+                                    id="kanyuHoshoCategoryF" style="width: 250px;">
+                                    <option></option>
+                                    <option *ngFor="let item of lsHoshoCategory" value="{{item.selNo}}">{{item.name}}</option>
+                                </select>
+                                <div class="group-radio-box">
+                                    <label class="radio-box">
+                                        {{'status.access' | translate}} 
+                                        <input 
+                                            [(ngModel)]="kanyuF" 
+                                            [ngClass]="{'input-disable': kanyuShiteiF === '0'}" 
+                                            [disabled]="kanyuShiteiF === '0'"
+                                            type="radio" name="radioKanyuF" value="1" /> <span class="checkmark"></span>
+                                    </label> 
+                                    <label class="radio-box">
+                                        {{'status.notAccess' | translate}} 
+                                        <input 
+                                            [(ngModel)]="kanyuF" 
+                                            [ngClass]="{'input-disable': kanyuShiteiF === '0'}" 
+                                            [disabled]="kanyuShiteiF === '0'"
+                                            type="radio" name="radioKanyuF" value="0" /> <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label>{{'perior.title' | translate}} <span class="text-red">*</span></label>
+                        <div>
+                            <div>
+                                <div class="group-radio-box">
+                                    <label class="radio-box">
+                                        {{'perior.all' | translate}} <input [(ngModel)]="kikanF" (ngModelChange)="kikanFChoose()" type="radio" name="radioKikanF" value="0" /> <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="group-radio-box">
+                                    <label class="radio-box radio-input-box radio-non-text">
+                                        &nbsp;<input [(ngModel)]="kikanF" (ngModelChange)="kikanFChoose()" type="radio" name="radioKikanF" id="radioKikanAllDay" value="2" /> <span class="checkmark"></span>
+                                    </label>
+                                    <input 
+                                        [disabled]="kikanF === null || kikanF.toString() !== '2'" 
+                                        [ngClass]="{'input-disable': kikanF === null || kikanF.toString() !== '2'}"
+                                        [(ngModel)]="kikanDaysAllDay" 
+                                        id="kikanDaysAllDay" type="text" maxlength="3" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="width: 40px;" />
+                                    <label class="pointer" for="radioKikanAllDay">{{'perior.allDay' | translate}}</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="group-radio-box">
+                                    <label class="radio-box radio-input-box radio-non-text">
+                                        &nbsp;<input [(ngModel)]="kikanF" (ngModelChange)="kikanFChoose()" type="radio" name="radioKikanF" id="radioKikanOneDay" value="1" /> <span class="checkmark"></span>
+                                    </label>
+                                    <input 
+                                        [disabled]="kikanF === null || kikanF.toString() !== '1'" 
+                                        [ngClass]="{'input-disable': kikanF === null || kikanF.toString() !== '1'}"
+                                        [(ngModel)]="kikanDaysOneDay" 
+                                        id="kikanDaysOneDay" type="text" maxlength="3" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="width: 40px;" />
+                                    <label class="pointer" for="radioKikanOneDay">{{'perior.oneDay' | translate}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row no-border">
+                        <label>{{'messageTitle' | translate}} <span class="text-red">*</span></label>
+                        <div>
+                            <div>
+                                <input [(ngModel)]="dataModel.MessageTitle" id="MessageTitle" type="text" maxlength="200" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row no-border">
+                        <label>{{'messageContent' | translate}} <span class="text-red">*</span></label>
+                        <div>
+                            <div>
+                                <textarea [(ngModel)]="dataModel.Message" id="Message" rows="5" maxlength="4000"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row no-border">
+                        <label>&nbsp;</label>
+                        <div>
+                            <div>
+                                <div class="list-img">
+                                    <div *ngFor="let item of lsImages" class="image-item">
+                                        <div>
+                                            <i (click)="removeImage(item)" class="fas fa-trash-alt"></i>
+                                            <img #img (load)="loadFileContent(img)" (click)="viewImage(item, 'image')" class="pointer" src="{{urlAPI}}api/getFileImg?group_id={{item.GroupID}}&file_id={{item.FileID}}&token={{token}}&{{random}}" />
+                                        </div>
+                                        <span>{{item.MenuFileName}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-bottom-tool">
+                    <button (click)="doBack()" type="button" class="btn-white btn-pading-30">{{'btnBack' | translate}}</button>
+                    <button (click)="doSend()" type="button" class="btn-red float-right">{{'btnSend' | translate}}</button>
+                    <button (click)="doAttach()" type="button" class="btn-red float-right">{{'btnAttach' | translate}}</button>
+                    <button (click)="doCaculator()" type="button" class="btn-red float-right">{{'btnCaculator' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

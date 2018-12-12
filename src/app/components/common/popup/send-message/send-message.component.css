@@ -1,0 +1,20 @@
+.popup-content {
+    padding: 10px 30px;
+}
+.popup-content p {
+    font-size: 14px;
+    margin: 15px 0px 20px;
+}
+.custom-modal-footer {
+    float: left;
+    width: 100%;
+}
+.custom-modal-footer button.left {
+    float: left;
+}
+.custom-modal-footer button:last-child {
+    float: right;
+}
+.bg-blue .popup-title, .bg-blue .normal-bt {
+    background-color: #0014ff;
+}

@@ -1,0 +1,48 @@
+table.tbl-box td input.col-50 {
+    width: 50%;
+}
+@media only screen and (max-width: 577px) {
+    table.tbl-box td input {
+        width: 100%;
+        background-position: 99% 50%;
+    }
+    table.tbl-box td input.col-50 {
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 578px) and (max-width: 697px) {
+    table.tbl-box td input {
+        width: 40px;
+        background-position: 45px 50%;
+    }
+}
+@media only screen and (max-width: 720px) {
+
+}
+@media only screen and (max-width: 439px) {
+
+}
+@media only screen and (min-width: 440px) and (max-width: 767px) {
+
+}
+@media only screen and (min-width: 768px) and (max-width: 940px) {
+
+}
+@media only screen and (min-width: 698px) and (max-width: 999px) {
+    table.tbl-box td input {
+        width: 70px;
+        background-position: 75px 50%;
+    }
+}
+@media only screen and (min-width: 1000px ) and (max-width: 1210px) {
+	table.tbl-box td input {
+        width: 40px;
+        background-position: 45px 50%;
+    }
+}
+@media only screen and (min-width: 1211px) {
+    table.tbl-box td input {
+        width: 70px;
+        background-position: 75px 50%;
+    }
+}

@@ -1,0 +1,46 @@
+<div [attr.id]="paramInfo.id">
+  <div class="ag-pagination">
+      <div class="ag-pagination-page-size">
+          <select [(ngModel)]="pageSize" (change)="onPageSizeChanged()">
+            <option *ngFor="let i of pageSizeRange" value="{{i}}">{{i}} 件</option>
+          </select>
+      </div>
+      <div class="ag-pagination-page">
+        <button
+          (click)="onPaginationControl('first')"
+          [disabled]="disabled.first" 
+          [ngClass]="{'input-disable': disabled.first}">
+          <i class="fas fa-step-backward"></i>
+        </button>
+        <button
+          (click)="onPaginationControl('prev')"
+          [disabled]="disabled.first" 
+          [ngClass]="{'input-disable': disabled.first}">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button *ngFor="let i of pagination" (click)="onPageChange(i)" [ngClass]="{'active': i === page}">{{i === -1 ? '...' : i}}</button>
+        <button 
+          (click)="onPaginationControl('next')"
+          [disabled]="disabled.last" 
+          [ngClass]="{'input-disable': disabled.last}">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <button 
+          (click)="onPaginationControl('last')"
+          [disabled]="disabled.last" 
+          [ngClass]="{'input-disable': disabled.last}">
+          <i class="fas fa-step-forward"></i>
+        </button>
+      </div>
+      <div class="ag-pagination-total-record">
+        <span class="float-right">結果: {{totalRecord}}件</span>
+      </div>
+  </div>
+  <div class="ag-table">
+      <ag-grid-angular
+        [gridOptions]="gridOptions"
+        [ngStyle]="paramInfo.style"
+        (rowSelected)="onRowSelected($event)"
+        class="ag-theme-balham"></ag-grid-angular>
+  </div>
+</div>

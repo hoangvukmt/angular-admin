@@ -1,0 +1,94 @@
+{
+    "customerName": "顧客名",
+    "yes": "あり",
+    "no": "なし ",
+    "headlthGroup": {
+        "title": "からだの保険",
+        "group1": {
+            "title": "万一に備える",
+            "items": {
+                "item1": "一生涯の保障",
+                "item2": "一定期間までの保障",
+                "item3": "残された家族の収入への備え"
+            }
+        },
+        "group2": {
+            "title": "病気に備える",
+            "items": {
+                "item1": "病気への備え",
+                "item2": "がんへの備え",
+                "item3": "三大疾病への備え",
+                "item4": "就業不能への備え",
+                "item5": "介護への備え"
+            }
+        },
+        "group3": {
+            "title": "貯蓄を兼ねた備え",
+            "items": {
+                "item1": "子供の教育資金への備え",
+                "item2": "老後への備え"
+            }
+        },
+        "group4": {
+            "title": "ケガに備える",
+            "items": {
+                "item1": "ケガへの備え"
+            }
+        }
+    },
+    "carGroup": {
+        "title": "車の保険",
+        "group1": {
+            "title": "ケガに備える",
+            "items": {
+                "item1": "ケガへの備え"
+            }
+        },
+        "group2": {
+            "title": "自動車",
+            "items": {
+                "item1": "自動車事故への備え"
+            }
+        },
+        "group3": {
+            "title": "自転車",
+            "items": {
+                "item1": "自転車事故への備え"
+            }
+        }
+    },
+    "houseGroup": {
+        "title": "住まいの保険",
+        "group1": {
+            "title": "建物",
+            "items": {
+                "item1": "火災への備え",
+                "item2": "地震への備え"
+            }
+        },
+        "group2": {
+            "title": "その他",
+            "items": {
+                "item1": "他人への賠償責任への備え",
+                "item2": "ペットの病気への備え"
+            }
+        }
+    },
+    "otherGroup": {
+        "title": "その他",
+        "group1": {
+            "title": "第三者",
+            "items": {
+                "item1": "他人への賠償責任への備え"
+            }
+        },
+        "group2": {
+            "title": "ベット",
+            "items": {
+                "item1": "ペットの病気への備え"
+            }
+        }
+    },
+    "message": "メッセージ入カ",
+    "submitButton": "送信する"
+}

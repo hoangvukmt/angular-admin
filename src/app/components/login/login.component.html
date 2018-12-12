@@ -1,0 +1,48 @@
+<div id="login">
+  <div class="contents">
+    <div class="inner">
+      <div class="box-inner vnext-form-control">
+        <section>
+          <div class="img-banner">
+            <img class="banner" src="{{ROOT_URL}}assets/img/login-img.png" />
+          </div>
+          <div class="login-form">
+            <div class="input-box">
+              <input matInput 
+                [formControl]="userNameFormControl" 
+                [ngClass]="{'input-error': userNameFormControl.hasError('required') && (userNameFormControl.dirty || userNameFormControl.touched)}"
+                class="user-name" 
+                placeholder="{{'userNamePlaceholder' | translate}}" 
+                type="text" 
+                maxlength="255" autofocus="autofocus" />
+            </div>
+            <div class="input-box">
+              <input matInput 
+                [formControl]="passWordFormControl" 
+                [ngClass]="{'input-error': passWordFormControl.hasError('required') && (passWordFormControl.dirty || passWordFormControl.touched)}"
+                class="pass-word" 
+                placeholder="{{'passwodPlaceholder' | translate}}" 
+                type="password" 
+                maxlength="20" />
+            </div>
+          </div>
+          <div *ngIf="loginFail" class="alert-error">{{loginFailMess}}</div>
+          <div *ngIf="userNameFormControl.hasError('required') && (userNameFormControl.dirty || userNameFormControl.touched)"
+            class="alert-error">{{'err_msg.userNameRequired' | translate}}</div>
+          <div *ngIf="passWordFormControl.hasError('required') && 
+            (passWordFormControl.dirty || passWordFormControl.touched) &&
+            !(userNameFormControl.hasError('required') && (userNameFormControl.dirty || userNameFormControl.touched))" 
+            class="alert-error">{{'err_msg.passwordRequired' | translate}}</div>
+          <div class="margin-top-15">
+            <button 
+              [disabled]="userNameFormControl.hasError('required') || passWordFormControl.hasError('required')" 
+              [ngClass]="{'input-disable': userNameFormControl.hasError('required') || passWordFormControl.hasError('required')}"
+              (click)="doLogin()" 
+              type="button" 
+              class="btn-block btn-red btn-enter">{{'buttonLogin' | translate}}</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

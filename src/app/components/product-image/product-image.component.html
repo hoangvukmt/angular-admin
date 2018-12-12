@@ -1,0 +1,54 @@
+<div class="contents">
+    <section>
+        <app-header></app-header>
+    </section>
+    <section>
+        <app-menu [objMenu]="objMenu"></app-menu>
+    </section>
+    <section>
+        <div class="box">
+            <app-tab-common [objTab]="objTab"></app-tab-common>
+            <div id="tab-2" class="tab-content tab-active">
+                <div class="tab-inner">
+                    <table class="tbl-box">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="90%">
+                        </colgroup>
+                        <tr>
+                            <td class="title">{{'customerName' | translate}}</td>
+                            <td class="content">{{customerInfo.CustommerFullName}}</td>
+                        </tr>
+                    </table>
+                    <div class="bg-red">
+                        <h2>{{'shoukenImage' | translate}}</h2>
+                    </div>
+                    <div class="list-img">
+                        <div *ngFor="let item of lsImages; let i=index" class="image-item">
+                            <div>
+                                <img (click)="viewImage(item, 'image')" class="pointer" onload="imageLoad(this)" src="{{urlAPI}}api/getFileImg?group_id={{item.GroupID}}&file_id={{item.FileID}}&token={{token}}&{{random}}" />
+                            </div>
+                            <span>{{item.MenuFileName}}</span>
+                        </div>
+                    </div>
+                    <div class="bg-red margin-top-15">
+                        <h2>{{'relationImage' | translate}}</h2>
+                    </div>
+                    <div class="list-img list-img-relation">
+                        <div *ngFor="let item of lsImagesRelation; let i=index"  class="image-item">
+                            <div>
+                                <i (click)="removeImage(lsImagesRelation, i)" class="fas fa-trash-alt pointer"></i>
+                                <img #img (load)="loadRelation(img)" (click)="viewImage(item, 'relation')" class="pointer" onload="imageLoad(this)" src="{{urlAPI}}api/getFileRelation?user_no={{item.UserNo}}&file_name={{item.FileName}}&token={{token}}&{{random}}" />
+                            </div>
+                            <span>{{item.MenuFileName}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button (click)="doBack()" type="button" class="btn-white btn-pading-30">{{'backButton' | translate}}</button>
+                    <button (click)="doUpload()" type="button" class="btn-red float-right">{{'uploadButton' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

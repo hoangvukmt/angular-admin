@@ -1,0 +1,28 @@
+.image-item:first-child {
+    margin-left: 0;
+}
+.radio-non-text {
+    margin-right: 0;
+}
+.radio-non-text input {
+    display: none;
+}
+.radio-non-text span {
+    top: 0;
+}
+.radio-non-text +input {
+    padding: 4px;
+    text-align: center;
+}
+@media only screen and (max-width: 767px) {
+	div.form-row > label, div.form-row > div {
+        width: 100%;
+    }
+    div.form-row > label {
+        background-color: #eee;
+        margin-bottom: 5px;
+    }
+    .tab-bottom-tool button {
+        padding: 5px 10px;
+    }
+}

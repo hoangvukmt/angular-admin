@@ -1,0 +1,7 @@
+<div class="tab {{tabClass}}">
+    <button (click)="doBack()" *ngIf="objTab.hasBack" type="button" class="tab-back">
+        <i class="fas fa-long-arrow-alt-left"></i>
+        {{backTitle}}
+    </button>
+    <button *ngFor="let item of objTab.tabList" (click)="goURL(item.url)" [ngClass]="{'active': objTab.currentTab === item.id}" type="button" class="tab-links">{{item.title}}</button>
+</div>

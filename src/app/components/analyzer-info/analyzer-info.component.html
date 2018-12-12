@@ -1,0 +1,591 @@
+<div class="contents">
+    <section>
+        <app-header></app-header>
+    </section>
+    <section>
+        <app-menu [objMenu]="objMenu"></app-menu>
+    </section>
+    <section>
+        <div class="box">
+            <app-tab-common [tabClass]="'menu-1'" [objTab]="objTab"></app-tab-common>
+            <div id="tab-4" class="tab-content tab-active">
+                <div class="tab-inner">
+                    <table class="tbl-box">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="90%">
+                        </colgroup>
+                        <tr>
+                            <td class="title">{{'customerName' | translate}}</td>
+                            <td class="content">{{customerInfo.CustommerFullName}}</td>
+                        </tr>
+                    </table>
+                    <div class="tbl-group">
+                        <div class="div-60">
+                            <table class="tbl-box">
+                                <colgroup>
+                                    <col width="20%">
+                                    <col width="20%">
+                                    <col width="20%">
+                                </colgroup>
+                                <tr>
+                                    <td colspan="3" class="border-white"></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="10">
+                                        <span class="life-icon icon">&nbsp;</span>
+                                        <span>{{'headlthGroup.title' | translate}}</span>
+                                    </td>
+                                    <td rowspan="3">
+                                        <span class="life-icon icon">&nbsp;</span>
+                                        <span>{{'headlthGroup.group1.title' | translate}}</span>
+                                    </td>
+                                    <td>{{'headlthGroup.group1.items.item1' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'headlthGroup.group1.items.item2' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'headlthGroup.group1.items.item3' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="5">
+                                        <span class="medical-icon icon">&nbsp;</span>
+                                        <span>{{'headlthGroup.group2.title' | translate}}</span>
+                                    </td>
+                                    <td>{{'headlthGroup.group2.items.item1' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'headlthGroup.group2.items.item2' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'headlthGroup.group2.items.item3' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'headlthGroup.group2.items.item4' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'headlthGroup.group2.items.item5' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">
+                                        <span class="savings-icon icon">&nbsp;</span>
+                                        <span>{{'headlthGroup.group3.title' | translate}}</span>
+                                    </td>
+                                    <td>{{'headlthGroup.group3.items.item1' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'headlthGroup.group3.items.item2' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">
+                                        <span class="car-icon icon">&nbsp;</span>
+                                        <span>{{'carGroup.title' | translate}}</span>
+                                    </td>
+                                    <td>{{'carGroup.group1.title' | translate}}</td>
+                                    <td>{{'carGroup.group1.items.item1' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'carGroup.group2.title' | translate}}</td>
+                                    <td>{{'carGroup.group2.items.item1' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'carGroup.group3.title' | translate}}</td>
+                                    <td>{{'carGroup.group3.items.item1' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">
+                                        <span class="house-icon icon">&nbsp;</span>
+                                        <span>{{'houseGroup.title' | translate}}</span>
+                                    </td>
+                                    <td rowspan="2">{{'houseGroup.group1.title' | translate}}</td>
+                                    <td>{{'houseGroup.group1.items.item1' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'houseGroup.group1.items.item2' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">
+                                        <span class="house-icon icon">&nbsp;</span>
+                                        <span>{{'otherGroup.title' | translate}}</span>
+                                    </td>
+                                    <td>{{'otherGroup.group1.title' | translate}}</td>
+                                    <td>{{'otherGroup.group1.items.item1' | translate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'otherGroup.group2.title' | translate}}</td>
+                                    <td>{{'otherGroup.group2.items.item1' | translate}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="div-40">
+                            <div class="div-scroll">
+                                <table class="tbl-box tbl-scroll">
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center col-head">{{item.FirstName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index">
+                                            <select
+                                                [disabled]="selectDisabled" 
+                                                (change)="onChange(item, item.IsshogaiHoshoF, 'IsshogaiHoshoF')" 
+                                                [ngClass]="{'red-circle-icon': item.IsshogaiHoshoF == 1, 'select-ios': iOS}" [(ngModel)]="item.IsshogaiHoshoF"
+                                                class="select-icon custom-select" name="IsshogaiHoshoF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(ngModel)]="item.IsshogaiHoshoF" 
+                                                (selectionChange)="onChange(item, item.IsshogaiHoshoF, 'IsshogaiHoshoF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.IsshogaiHoshoF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.IsshogaiHoshoF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.ItteiKikanHoshoF, 'ItteiKikanHoshoF')" class="select-icon" [ngClass]="{'red-circle-icon': item.ItteiKikanHoshoF == 1, 'select-ios': iOS}" [(ngModel)]="item.ItteiKikanHoshoF" name="ItteiKikanHoshoF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.ItteiKikanHoshoF"
+                                                (selectionChange)="onChange(item, item.ItteiKikanHoshoF, 'ItteiKikanHoshoF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.ItteiKikanHoshoF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.ItteiKikanHoshoF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.FamilyShunyuF, 'FamilyShunyuF')" class="select-icon" [ngClass]="{'red-circle-icon': item.FamilyShunyuF == 1, 'select-ios': iOS}" [(ngModel)]="item.FamilyShunyuF" name="FamilyShunyuF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.FamilyShunyuF"
+                                                (selectionChange)="onChange(item, item.FamilyShunyuF, 'FamilyShunyuF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.FamilyShunyuF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.FamilyShunyuF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.SickF, 'SickF')" class="select-icon" [ngClass]="{'red-circle-icon': item.SickF == 1, 'select-ios': iOS}" [(ngModel)]="item.SickF" name="SickF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.SickF"
+                                                (selectionChange)="onChange(item, item.SickF, 'SickF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.SickF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.SickF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.GanF, 'GanF')" class="select-icon" [ngClass]="{'red-circle-icon': item.GanF == 1, 'select-ios': iOS}" [(ngModel)]="item.GanF" name="GanF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.GanF"
+                                                (selectionChange)="onChange(item, item.GanF, 'GanF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.GanF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.GanF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.ShippeiF, 'ShippeiF')" class="select-icon" [ngClass]="{'red-circle-icon': item.ShippeiF == 1, 'select-ios': iOS}" [(ngModel)]="item.ShippeiF" name="ShippeiF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.ShippeiF"
+                                                (selectionChange)="onChange(item, item.ShippeiF, 'ShippeiF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.ShippeiF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.ShippeiF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.ShugyoFunoF, 'ShugyoFunoF')" class="select-icon" [ngClass]="{'red-circle-icon': item.ShugyoFunoF == 1, 'select-ios': iOS}" [(ngModel)]="item.ShugyoFunoF" name="ShugyoFunoF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.ShugyoFunoF"
+                                                (selectionChange)="onChange(item, item.ShugyoFunoF, 'ShugyoFunoF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.ShugyoFunoF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.ShugyoFunoF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.KaigoF, 'KaigoF')" class="select-icon" [ngClass]="{'red-circle-icon': item.KaigoF == 1, 'select-ios': iOS}" [(ngModel)]="item.KaigoF" name="KaigoF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.KaigoF"
+                                                (selectionChange)="onChange(item, item.KaigoF, 'KaigoF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.KaigoF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.KaigoF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.EducationFundF, 'EducationFundF')" class="select-icon" [ngClass]="{'red-circle-icon': item.EducationFundF == 1, 'select-ios': iOS}" [(ngModel)]="item.EducationFundF" name="EducationFundF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.EducationFundF"
+                                                (selectionChange)="onChange(item, item.EducationFundF, 'EducationFundF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.EducationFundF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.EducationFundF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.RogoF, 'RogoF')" class="select-icon" [ngClass]="{'red-circle-icon': item.RogoF == 1, 'select-ios': iOS}" [(ngModel)]="item.RogoF" name="RogoF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.RogoF"
+                                                (selectionChange)="onChange(item, item.RogoF, 'RogoF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.RogoF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.RogoF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.KegaF, 'KegaF')" class="select-icon" [ngClass]="{'red-circle-icon': item.KegaF == 1, 'select-ios': iOS}" [(ngModel)]="item.KegaF" name="KegaF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.KegaF"
+                                                (selectionChange)="onChange(item, item.KegaF, 'KegaF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.KegaF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.KegaF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.CarF, 'CarF')" class="select-icon" [ngClass]="{'red-circle-icon': item.CarF == 1, 'select-ios': iOS}" [(ngModel)]="item.CarF" name="CarF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.CarF"
+                                                (selectionChange)="onChange(item, item.CarF, 'CarF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.CarF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.CarF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.BicycleF, 'BicycleF')" class="select-icon" [ngClass]="{'red-circle-icon': item.BicycleF == 1, 'select-ios': iOS}" [(ngModel)]="item.BicycleF" name="BicycleF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.BicycleF"
+                                                (selectionChange)="onChange(item, item.BicycleF, 'BicycleF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.BicycleF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.BicycleF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.KasaiF, 'KasaiF')" class="select-icon" [ngClass]="{'red-circle-icon': item.KasaiF == 1, 'select-ios': iOS}" [(ngModel)]="item.KasaiF" name="KasaiF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.KasaiF"
+                                                (selectionChange)="onChange(item, item.KasaiF, 'KasaiF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.KasaiF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.KasaiF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.JishinF, 'JishinF')" class="select-icon" [ngClass]="{'red-circle-icon': item.JishinF == 1, 'select-ios': iOS}" [(ngModel)]="item.JishinF" name="JishinF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.JishinF"
+                                                (selectionChange)="onChange(item, item.JishinF, 'JishinF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.JishinF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.JishinF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.LiabilityF, 'LiabilityF')" class="select-icon" [ngClass]="{'red-circle-icon': item.LiabilityF == 1, 'select-ios': iOS}" [(ngModel)]="item.LiabilityF" name="LiabilityF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.LiabilityF"
+                                                (selectionChange)="onChange(item, item.LiabilityF, 'LiabilityF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.LiabilityF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.LiabilityF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td *ngFor="let item of lsFamily; let i = index" class="center">
+                                            <select [disabled]="selectDisabled" (change)="onChange(item, item.PetF, 'PetF')" class="select-icon" [ngClass]="{'red-circle-icon': item.PetF == 1, 'select-ios': iOS}" [(ngModel)]="item.PetF" name="PetF[{{ i }}]">
+                                                <option value="0" rel="0"></option>
+                                                <option *ngIf="iOS" value="1" rel="1">⭕</option>
+                                                <option *ngIf="!iOS" value="1" rel="1">&#xf10c;</option>
+                                            </select>
+                                            <!--
+                                            <mat-select
+                                                [disabled]="selectDisabled"
+                                                [(value)]="item.PetF"
+                                                (selectionChange)="onChange(item, item.PetF, 'PetF')">
+                                                <mat-option [value]="0">
+                                                    <mat-icon></mat-icon>
+                                                </mat-option>
+                                                <mat-option [value]="1">
+                                                    <mat-icon><i class="far fa-circle"></i></mat-icon>
+                                                </mat-option>
+                                                <mat-select-trigger>
+                                                    <mat-icon *ngIf="item.PetF === 0"></mat-icon>
+                                                    <mat-icon *ngIf="item.PetF === 1"><i class="far fa-circle"></i></mat-icon>
+                                                </mat-select-trigger>
+                                            </mat-select>
+                                            -->
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="margin-top-50">{{'message' | translate}}</h2>
+                    <textarea [readonly]="selectDisabled" [(ngModel)]="messageContent" name="messageContent" rows="5"></textarea>
+                </div>
+                <div class="right">
+                    <button 
+                        (click)="doSave()" 
+                        [disabled]="!doneRequest || (mapCheck.size === 0 && messageData === messageContent)" 
+                        [ngClass]="{'input-disable': !doneRequest || (mapCheck.size === 0 && messageData === messageContent)}"
+                        type="button" class="btn-red">{{'submitButton' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

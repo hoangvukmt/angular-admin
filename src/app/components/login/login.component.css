@@ -1,0 +1,8 @@
+html {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+body {
+	background: linear-gradient(to top left, #e4e445, #bee5ca);
+}

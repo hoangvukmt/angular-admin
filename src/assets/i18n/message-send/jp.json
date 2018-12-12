@@ -1,0 +1,19 @@
+{
+    "to": "宛先",
+    "toText": "保険フォルダカスタマー",
+    "subject": "件名",
+    "btnUpload": "画像添付",
+    "btnSend": "送信",
+    "btnBack": "戻る",
+    "message": {
+        "sendSuccess": "メールは送信しました。",
+        "titleNotNull": "タイトルを空欄にしてはいけません。",
+        "messageNotNull": "メッセージテキストを空欄にしてはいけません。",
+        "err": "エラー発生",
+        "uploadSuccess": "ファイルアップロードに成功しました。",
+        "imageLimited": "添付画像の総数が最大5個です。",
+        "pdfRequired": "少なくとも1つのPDFファイルが必要です"
+    },
+    "confirmDelete": "本当に削除しますか。",
+    "confirmSend": "メッセージを送信します。<br><br>よろしいですか。"
+}

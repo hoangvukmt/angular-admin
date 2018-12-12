@@ -1,0 +1,26 @@
+td.hasError {
+    position: relative;
+    padding-bottom: 15px;
+}
+td.hasError input {
+    display: block;
+}
+td.hasError mat-error{
+    margin-left: 10px;
+}
+.mat-error{
+    position: unset;
+    float: left;
+    margin: 0 !important;
+}
+.input-table td {
+    padding: 10px;
+}
+button, label.btn {
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px 31px;
+    cursor: pointer;
+}

@@ -1,0 +1,23 @@
+{
+    "title": "顧客一覧",
+    "fullName": "顧客名",
+    "address": "住所",
+    "email": "メールアドレス",
+    "birthday": "生年月日",
+    "kanishindan": "簡易診断",
+    "shokenBunseki": "お試し診断分析",
+    "day": "日",
+    "month": "月",
+    "year": "年",
+    "agent": "代理店",
+    "beforeRequest": "なし",
+    "inRequest": "依頼",
+    "requestComplete": "完了",
+    "btnSearch": "検索",
+    "all": "すべて",
+    "message": {
+        "fromDateGreaterToDate": "開始日を終了日より大きくしてはいけません。",
+        "monthRequired": "月を入力してください。",
+        "dayRequired": "日のみの入力は検索できません"
+    }
+}

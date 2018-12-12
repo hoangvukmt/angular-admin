@@ -1,0 +1,65 @@
+@media only screen and (max-width: 577px) {
+    table.tbl-box td input {
+        width: 100%;
+        background-position: 99% 50%;
+    }
+    .group-input > div:first-child {
+        margin-top: 5px;
+    }
+    .group-input > div:last-child {
+        margin-bottom: 5px;
+    }
+    .group-input > div {
+        width: 100%;
+        float: left;
+    }
+}
+@media only screen and (min-width: 578px) and (max-width: 697px) {
+    table.tbl-box td input {
+        width: 40px;
+        background-position: 45px 50%;
+    }
+    .group-input > div:first-child {
+        margin-top: 5px;
+    }
+    .group-input > div:last-child {
+        margin-bottom: 5px;
+    }
+    .group-input > div {
+        width: 100%;
+        float: left;
+    }
+}
+@media only screen and (max-width: 767px) {
+	table.tbl-box td.title {
+        width: 25%;
+    }
+}
+@media only screen and (min-width: 698px) and (max-width: 999px) {
+    .group-input > div {
+        width: 100%;
+        float: left;
+    }
+    .group-input > div:first-child {
+        margin-top: 5px;
+    }
+    .group-input > div:last-child {
+        margin-bottom: 5px;
+    }
+    table.tbl-box td input {
+        width: 70px;
+        background-position: 75px 50%;
+    }
+}
+@media only screen and (min-width: 1000px ) and (max-width: 1210px) {
+	table.tbl-box td input {
+        width: 40px;
+        background-position: 45px 50%;
+    }
+}
+@media only screen and (min-width: 1211px) {
+    table.tbl-box td input {
+        width: 70px;
+        background-position: 75px 50%;
+    }
+}

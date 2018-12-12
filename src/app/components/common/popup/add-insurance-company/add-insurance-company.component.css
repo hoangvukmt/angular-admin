@@ -1,0 +1,35 @@
+.popup-content table tr {
+    height: 50px;
+}
+.popup-content table tr td {
+    line-height: 10px;
+    padding-right: 10px;
+}
+.company-name{
+    line-height: 18px !important;
+    padding-right: 20px;
+}
+td.hasError {
+    position: relative;
+}
+td.hasError input {
+    display: block;
+}
+td.hasError mat-error{
+    margin-left: 10px;
+}
+button {
+    min-width: 150px;
+    margin-right: 5px;
+    height: 35px;
+    line-height: unset;
+}
+button:last-child {
+    margin-right: 0;
+}
+@media only screen and (max-width: 767px) {
+    button {
+        min-width: 40%;
+        padding: 1vmin 0vmin;
+    }
+}

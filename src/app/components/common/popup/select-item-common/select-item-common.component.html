@@ -1,0 +1,63 @@
+<div class="no-padding remodal remodal-is-initialized remodal-is-opened">
+    <div class="popup-title custom-modal-title">{{data.popupTitle}}</div>
+    <div class="popup-container">
+        <div class="popup-content">
+            <table class="border-table">
+                <colgroup>
+                    <col width="90%">
+                    <col width="10%">
+                </colgroup>
+                <tbody *ngIf="data.category==='AGENCY'">
+                    <tr class="custom-modal-row" *ngFor="let data of listData, let i = index" (click)="chooseOption(i)">
+                        <td colspan="2">
+                            <span class="family-select-title">{{data.AgentName}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="data.category==='COMPANY'">
+                    <tr class="custom-modal-row" *ngFor="let data of listData, let i = index" (click)="chooseOption(i)">
+                        <td colspan="2">
+                            <span class="family-select-title">{{data.COMPANYNAME}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="data.category==='INSURANCY-TYPE'">
+                    <tr class="custom-modal-row" *ngFor="let data of listData, let i = index" (click)="chooseOption(i)">
+                        <td colspan="2">
+                            <span class="family-select-title">{{data.PRODUCTNAME}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tbody *ngIf="data.category==='HOSHO'">
+                    <tr class="custom-modal-row" *ngFor="let data of listData, let i = index" (click)="chooseOption(i)">
+                        <td colspan="2">
+                            <span class="family-select-title">{{data.HoshoName}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tbody *ngIf="data.category==='TOKUYAKU'">
+                    <tr class="custom-modal-row" *ngFor="let data of listData, let i = index" (click)="chooseOption(i)">
+                        <td colspan="2">
+                            <span class="family-select-title">{{data.NAME}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot *ngIf="data.category !== 'AGENCY'">
+                    <tr class="custom-modal-row" (click)="doHandle()">
+                        <td>
+                            <span class="family-select-title">その他項目を手入力します</span>
+                        </td>
+                        <td class="right">
+                            <span class="handle"></span>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="popup-footer custom-modal-footer">
+            <button class="btn-white" (click)="closePopup()">閉じる</button>
+        </div>
+    </div>
+</div>

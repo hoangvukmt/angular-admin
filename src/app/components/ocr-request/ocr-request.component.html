@@ -1,0 +1,110 @@
+<div class="contents">
+    <section>
+        <app-header></app-header>
+    </section>
+    <section>
+        <app-menu [objMenu]="objMenu"></app-menu>
+    </section>
+    <section>      
+        <div class="box">            
+            <h2>{{'title' | translate}}</h2>
+            <div class="box-body">
+                <table class="tbl-box">
+                    <colgroup>
+                        <col width="15%">
+                        <col width="85%">
+                    </colgroup>
+                    <tr>
+                        <td class="title">{{'time' | translate}}</td>
+                        <td class="content">
+                            <div class="group-input">
+                                <div>
+                                    <div class="date-hidden">
+                                        <div class="custom-date" id="divFromDate">
+                                            <input [formControl]="fromDateFormControl" matInput [matDatepicker]="fromDate" (dateChange)="fromDateChange()" />
+                                            <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                                            <mat-datepicker #fromDate></mat-datepicker>
+                                        </div>
+                                        <input [(ngModel)]="searchDate.fromYear" (ngModelChange)="changeSearchDate()" type="text" maxlength="4" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                        <span class="date-input" (click)="fromDate.open();" onclick="window.editMatDate('CustomerSearchComponent', 'fromDate');">&nbsp;</span>
+                                    </div>
+                                    <span>{{'year' | translate}}</span>
+                                    <div class="date-hidden">
+                                        <input [(ngModel)]="searchDate.fromMonth" (ngModelChange)="changeSearchDate()" type="text" maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                        <span class="date-input" (click)="fromDate.open();" onclick="window.editMatDate('CustomerSearchComponent', 'fromDate');">&nbsp;</span>
+                                    </div>
+                                    <span>{{'month' | translate}}</span>
+                                    <div class="date-hidden">
+                                        <input [(ngModel)]="searchDate.fromDay" (ngModelChange)="changeSearchDate()" type="text" maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                        <span class="date-input" (click)="fromDate.open();" onclick="window.editMatDate('CustomerSearchComponent', 'fromDate');">&nbsp;</span>
+                                    </div>
+                                    <span>{{'day' | translate}}</span>
+                                </div>
+                                <div>
+                                    <span>&nbsp;&nbsp;~&nbsp;&nbsp;</span>
+                                </div>
+                                <div>
+                                    <div class="date-hidden">
+                                        <div class="custom-date" id="divToDate">
+                                            <input [formControl]="toDateFormControl" matInput [matDatepicker]="toDate" (dateChange)="toDateChange()" />
+                                            <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                                            <mat-datepicker #toDate></mat-datepicker>
+                                        </div>
+                                        <input [(ngModel)]="searchDate.toYear" (ngModelChange)="changeSearchDate()" type="text" maxlength="4" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                        <span class="date-input" (click)="toDate.open();" onclick="window.editMatDate('CustomerSearchComponent', 'toDate');">&nbsp;</span>
+                                    </div>
+                                    <span>{{'year' | translate}}</span>
+                                    <div class="date-hidden">
+                                        <input [(ngModel)]="searchDate.toMonth" (ngModelChange)="changeSearchDate()" type="text" maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                        <span class="date-input" (click)="toDate.open();" onclick="window.editMatDate('CustomerSearchComponent', 'toDate');">&nbsp;</span>
+                                    </div>
+                                    <span>{{'month' | translate}}</span>
+                                    <div class="date-hidden">
+                                        <input [(ngModel)]="searchDate.toDay" (ngModelChange)="changeSearchDate()" type="text" maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                        <span class="date-input" (click)="toDate.open();" onclick="window.editMatDate('CustomerSearchComponent', 'toDate');">&nbsp;</span>
+                                    </div>
+                                    <span>{{'day' | translate}}</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">{{'messageType' | translate}}</td>
+                        <td class="content">
+                            <div class="group-check-box">
+                                <label class="check-box">
+                                    {{'messageType1' | translate}}
+                                    <input [(ngModel)]="messageTypeOption.option1" type="checkbox" />
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="check-box">
+                                    {{'messageType2' | translate}}
+                                    <input [(ngModel)]="messageTypeOption.option2" type="checkbox" />
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="check-box">
+                                    {{'messageType3' | translate}}
+                                    <input [(ngModel)]="messageTypeOption.option3" type="checkbox" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>                      
+                </table>
+                <div class="box-tool">
+                    <button (click)="doSearch()" type="button" class="btn-white float-right">
+                        <i class="fas fa-search"></i>{{'btnSearch' | translate}}
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <app-grid-common #tableResult (checked)="updatechecked($event)" [gridOptions]="gridOptions" [paramInfo]="paramInfo"></app-grid-common>                    
+            </div>
+            <div class="box-tool">
+                <button [disabled]="checked" (click)="clickMethod()" type="button" class="btn-white float-right">
+                    <i class="fas fa-delete"></i>{{'btnDelete' | translate}}
+                </button>
+            </div>
+        </div>
+    </section>
+</div>

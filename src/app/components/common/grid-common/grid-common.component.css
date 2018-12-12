@@ -1,0 +1,18 @@
+@media only screen and (max-width: 767px) {
+	.ag-pagination .ag-pagination-page-size, .ag-pagination .ag-pagination-page, .ag-pagination .ag-pagination-total-record {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .ag-pagination .ag-pagination-page-size select {
+        float: unset;
+        height: 25px;
+    }
+    .ag-pagination .ag-pagination-total-record span {
+        float: unset;
+    }
+    .ag-pagination .ag-pagination-page button {
+        width: 25px;
+        height: 25px;
+    }
+}

@@ -1,0 +1,69 @@
+<div class="no-padding remodal remodal-is-initialized remodal-is-opened">
+    <div class="popup-title custom-modal-title">{{data.popupTitle}}</div>
+    <div class="popup-container" *ngIf="data.popupTitle !== 'Error'">
+        <div class="popup-content">
+            <table class="noborder-table input-table">
+                <colgroup>
+                    <col width="20%">
+                    <col width="80%">
+                </colgroup>
+                <tr class="tr-line-bottom" *ngIf="!data.option.isShukeiyaku && data.option.statusTokuyaku !== 'none'">
+                    <th class="list-title">
+                        特約:
+                    </th>
+                    <td style="text-align: left;">
+                        <input type="text" [(ngModel)]="data.tokuyaku.TokuyakuName" maxlength="40" />
+                    </td>
+                </tr>
+                <tr class="tr-line-bottom" *ngIf="data.option.statusTokuyaku !== 'edit'">
+                    <th class="list-title">
+                        保障名:
+                    </th>
+                    <td style="text-align: left;">
+                        <input type="text" [(ngModel)]="data.hosho.HoshoName" maxlength="50" />
+                    </td>
+                </tr>
+
+                <tr class="tr-line-bottom" *ngIf="data.option.statusTokuyaku !== 'edit'">
+                    <th class="list-title">
+                        <span *ngIf="data.hosho.TypeF.toString() === '10'">金額:</span>
+                    </th>
+                    <td>
+                        <app-keiyaku-field *ngIf="fieldDisplay.type.toString() !== '35'"
+                            [(keiyakuDetail)]="keiyakuDetail" 
+                            [(fieldDisplay)]="fieldDisplay" 
+                            [(formModel)]="mainFormControl"
+                            [(secondModel)]="noneFormControl"
+                            (eventOut)="changeEvent($event)"></app-keiyaku-field>
+                        <app-year-month *ngIf="fieldDisplay.type.toString() === '35'"
+                            [(keiyakuDetail)]="keiyakuDetail" 
+                            [fieldDisplay]="fieldDisplay" 
+                            [(formModel)]="mainFormControl"
+                            [(secondModel)]="noneFormControl"></app-year-month>
+                    </td>
+                </tr>
+
+                <tr class="tr-line-bottom" *ngIf="data.option.statusTokuyaku !== 'edit'">
+                    <th class="list-title">
+                        コメント:
+                    </th>
+                    <td>
+                        <input type="text" [(ngModel)]="data.hosho.Comment" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="popup-footer custom-modal-footer">
+            <button type="button" class="normal-bt" 
+                [disabled]="checkRequired()"
+                [ngClass]="{'input-disable': checkRequired()}"
+                (click)="saveData()">保存</button>
+        </div>
+    </div>
+
+    <div class="popup-container" *ngIf="data.popupTitle === 'Error'">
+        <div class="popup-content" style="padding-top: 10px;">
+            {{data.option.value}}
+        </div>
+    </div>
+</div>
